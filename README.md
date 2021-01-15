@@ -1,9 +1,17 @@
 # Vue-MobX-Bootstrap.ts
 
-[Vue][1] project scaffold based on [TypeScript][2], [MobX][3] & [Bootstrap][4]
+[Vue][1] project scaffold based on [TypeScript][2], [MobX][3] & [Bootstrap][4],
+which is inspired by [WebCell scaffold][5].
 
-[![NPM Dependency](https://david-dm.org/TechQuery/Vue-MobX-Bootstrap-ts.svg)][5]
-[![CI & CD](https://github.com/TechQuery/Vue-MobX-Bootstrap-ts/workflows/CI%20&%20CD/badge.svg)][6]
+[![NPM Dependency](https://david-dm.org/TechQuery/Vue-MobX-Bootstrap-ts.svg)][6]
+[![CI & CD](https://github.com/TechQuery/Vue-MobX-Bootstrap-ts/workflows/CI%20&%20CD/badge.svg)][7]
+
+## Knowledge
+
+- [TypeScript][2]
+- [mobx-vue](https://github.com/mobxjs/mobx-vue)
+- [bootstrap-vue](https://bootstrap-vue.org/)
+- [KoAJAX](https://github.com/EasyWebApp/KoAJAX)
 
 ## Usage
 
@@ -39,5 +47,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 [2]: https://www.typescriptlang.org/
 [3]: https://mobx.js.org/
 [4]: https://getbootstrap.com/
-[5]: https://david-dm.org/TechQuery/Vue-MobX-Bootstrap-ts
-[6]: https://github.com/TechQuery/Vue-MobX-Bootstrap-ts/actions
+[5]: https://github.com/EasyWebApp/scaffold
+[6]: https://david-dm.org/TechQuery/Vue-MobX-Bootstrap-ts
+[7]: https://github.com/TechQuery/Vue-MobX-Bootstrap-ts/actions
