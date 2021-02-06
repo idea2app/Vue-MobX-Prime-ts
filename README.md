@@ -13,29 +13,35 @@ which is inspired by [WebCell scaffold][5].
 - [bootstrap-vue](https://bootstrap-vue.org/)
 - [KoAJAX](https://github.com/EasyWebApp/KoAJAX)
 
+## Extra components
+
+- [`<Panel />`](src/components/Panel.vue)
+- [`<Stepper />`](src/components/Stepper.vue)
+- [`<ImageUploader />`](src/components/ImageUploader.vue)
+
 ## Usage
 
 ### Project setup
 
-```
+```Shell
 npm install
 ```
 
 ### Compiles and hot-reloads for development
 
-```
+```Shell
 npm start
 ```
 
 ### Compiles and minifies for production
 
-```
+```Shell
 npm run build
 ```
 
 ### Lints and fixes files
 
-```
+```Shell
 npm test
 ```
 

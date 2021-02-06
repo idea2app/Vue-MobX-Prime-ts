@@ -13,6 +13,10 @@ export default new VueRouter({
       component: Home
     },
     {
+      path: '/component',
+      component: () => import('./views/Component.vue')
+    },
+    {
       path: '/about',
       name: 'About',
       // route level code-splitting

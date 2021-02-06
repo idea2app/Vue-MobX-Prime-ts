@@ -3,22 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.5.3",
+    "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
     "koajax": "^0.6.4",
     "mobx": "^5.15.7",
     "mobx-vue": "^2.0.11",
     "vue": "^2.6.12",
-    "vue-router": "^3.4.9"
+    "vue-router": "^3.5.1",
+    "web-utility": "^2.4.4"
   },
   "devDependencies": {
-    "@octokit/openapi-types": "^2.2.0",
-    "@vue/cli-plugin-router": "~4.5.9",
-    "@vue/cli-plugin-typescript": "~4.5.9",
-    "@vue/cli-service": "~4.5.9",
-    "less": "^4.1.0",
-    "less-loader": "^7.2.1",
-    "lint-staged": "^10.5.3",
+    "@octokit/openapi-types": "^4.0.1",
+    "@vue/cli-plugin-router": "~4.5.11",
+    "@vue/cli-plugin-typescript": "~4.5.11",
+    "@vue/cli-service": "~4.5.11",
+    "less": "^4.1.1",
+    "less-loader": "^7.3.0",
+    "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "typescript": "^4.1.3",
     "vue-template-compiler": "^2.6.12"
