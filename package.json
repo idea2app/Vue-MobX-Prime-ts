@@ -1,6 +1,6 @@
 {
   "name": "vue-mobx-bootstrap-ts",
-  "version": "0.1.0",
+  "version": "0.4.0",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.6.0",
@@ -13,15 +13,15 @@
     "web-utility": "^2.4.4"
   },
   "devDependencies": {
-    "@octokit/openapi-types": "^4.0.1",
-    "@vue/cli-plugin-router": "~4.5.11",
-    "@vue/cli-plugin-typescript": "~4.5.11",
-    "@vue/cli-service": "~4.5.11",
+    "@octokit/openapi-types": "^6.0.0",
+    "@vue/cli-plugin-router": "~4.5.12",
+    "@vue/cli-plugin-typescript": "~4.5.12",
+    "@vue/cli-service": "~4.5.12",
     "less": "^4.1.1",
     "less-loader": "^7.3.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
-    "typescript": "^4.1.3",
+    "typescript": "^4.2.4",
     "vue-template-compiler": "^2.6.12"
   },
   "prettier": {

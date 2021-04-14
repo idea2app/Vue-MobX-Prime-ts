@@ -26,7 +26,6 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
 import { observer } from 'mobx-vue';
 
 import project from '../models/Project';
