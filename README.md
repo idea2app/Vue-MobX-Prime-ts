@@ -3,8 +3,8 @@
 [Vue][1] project scaffold based on [TypeScript][2], [MobX][3] & [Bootstrap][4],
 which is inspired by [WebCell scaffold][5].
 
-[![NPM Dependency](https://david-dm.org/TechQuery/Vue-MobX-Bootstrap-ts.svg)][6]
-[![CI & CD](https://github.com/TechQuery/Vue-MobX-Bootstrap-ts/workflows/CI%20&%20CD/badge.svg)][7]
+[![NPM Dependency](https://david-dm.org/idea2app/Vue-MobX-Bootstrap-ts.svg)][6]
+[![CI & CD](https://github.com/idea2app/Vue-MobX-Bootstrap-ts/workflows/CI%20&%20CD/badge.svg)][7]
 
 ## Knowledge
 
@@ -15,8 +15,10 @@ which is inspired by [WebCell scaffold][5].
 
 ## Extra components
 
+- [`<StockNumber />`](src/components/StockNumber.vue)
 - [`<Panel />`](src/components/Panel.vue)
 - [`<Stepper />`](src/components/Stepper.vue)
+- [`<Table />`](src/components/Table.vue)
 - [`<ImageUploader />`](src/components/ImageUploader.vue)
 
 ## Usage
@@ -54,5 +56,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 [3]: https://mobx.js.org/
 [4]: https://getbootstrap.com/
 [5]: https://github.com/EasyWebApp/scaffold
-[6]: https://david-dm.org/TechQuery/Vue-MobX-Bootstrap-ts
-[7]: https://github.com/TechQuery/Vue-MobX-Bootstrap-ts/actions
+[6]: https://david-dm.org/idea2app/Vue-MobX-Bootstrap-ts
+[7]: https://github.com/idea2app/Vue-MobX-Bootstrap-ts/actions
