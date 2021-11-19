@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { makeObservable, observable, action } from 'mobx';
 import { components } from '@octokit/openapi-types';
 
 import { service } from './service';
@@ -7,16 +7,21 @@ export type Project = components['schemas']['minimal-repository'] & {
   logo?: string;
 };
 
-export class ProjectModel {
+export class ProjectStore {
   @observable
   list: Project[] = [];
 
+  constructor() {
+    makeObservable(this);
+  }
+
+  @action
   async getList(...names: string[]) {
     for (const name of names) {
       const { body } = await service.get<Project>(`repos/${name}`);
 
-      const logo = await ProjectModel.getLogo(body.owner.login, body.name);
-      this.list.push({ ...body, logo });
+      const logo = await ProjectStore.getLogo(body!.owner!.login, body!.name);
+      this.list.push({ ...body!, logo });
     }
     return this.list;
   }
@@ -38,4 +43,4 @@ export class ProjectModel {
   }
 }
 
-export default new ProjectModel();
+export default new ProjectStore();

@@ -1,5 +1,5 @@
 <template>
-  <b-container class="text-left">
+  <CContainer class="text-left">
     <h2>Stock Number</h2>
     <StockNumber :extent="0.3" :value="0.3">
       <span slot="after">%</span>
@@ -25,19 +25,15 @@
     />
     <h2 class="mt-4">Image Uploader</h2>
     <ImageUploader class="mb-4" />
-  </b-container>
+  </CContainer>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
+<script lang="ts" setup>
+import { CContainer } from '@coreui/vue';
 
-import StockNumber from '@/components/StockNumber.vue';
-import Panel from '@/components/Panel.vue';
-import Stepper from '@/components/Stepper.vue';
-import Table from '@/components/Table.vue';
-import ImageUploader from '@/components/ImageUploader.vue';
-
-export default Vue.extend({
-  components: { StockNumber, Panel, Stepper, Table, ImageUploader }
-});
+import StockNumber from '../components/StockNumber.vue';
+import Panel from '../components/Panel.vue';
+import Stepper from '../components/Stepper.vue';
+import Table from '../components/Table.vue';
+import ImageUploader from '../components/ImageUploader.vue';
 </script>

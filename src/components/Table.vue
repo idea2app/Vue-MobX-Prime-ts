@@ -1,42 +1,42 @@
 <template>
-  <b-table-simple
+  <CTable
     striped
     borderless
     responsive
     class="border rounded px-3 text-center small"
     style="max-height: 75vh"
   >
-    <b-thead>
-      <b-tr class="border-bottom text-nowrap text-primary">
-        <b-th v-for="head in heads" :key="head">
+    <CTableHead>
+      <CTableRow class="border-bottom text-nowrap text-primary">
+        <CTableHeaderCell v-for="head in heads" :key="head">
           {{ head }}
-        </b-th>
-      </b-tr>
-    </b-thead>
-    <b-tbody class="text-secondary">
-      <b-tr
+        </CTableHeaderCell>
+      </CTableRow>
+    </CTableHead>
+    <CTableBody class="text-secondary">
+      <CTableRow
         v-for="(row, index) in rows"
         :key="'tr' + index"
         @click="$emit('rowClick', index)"
       >
-        <b-td
+        <CTableDataCell
           class="text-nowrap"
           v-for="(cell, index) in row"
           :key="'td' + index"
         >
           {{ cell }}
-        </b-td>
-      </b-tr>
-    </b-tbody>
-  </b-table-simple>
+        </CTableDataCell>
+      </CTableRow>
+    </CTableBody>
+  </CTable>
 </template>
 
 <style lang="less">
 .table-striped tbody tr {
-  &:nth-of-type(odd) {
+  &:nth-of-type(even) {
     background: transparent;
   }
-  &:nth-of-type(even) {
+  &:nth-of-type(odd) {
     background: rgba(52, 105, 242, 0.1);
     td {
       &:first-child {
@@ -53,9 +53,18 @@
 </style>
 
 <script lang="ts">
-import Vue from 'vue';
-
-export default Vue.extend({
+export default {
   props: ['heads', 'rows']
-});
+};
+</script>
+
+<script lang="ts" setup>
+import {
+  CTable,
+  CTableHead,
+  CTableRow,
+  CTableHeaderCell,
+  CTableBody,
+  CTableDataCell
+} from '@coreui/vue';
 </script>

@@ -1,17 +1,19 @@
 # Vue-MobX-Bootstrap.ts
 
-[Vue][1] project scaffold based on [TypeScript][2], [MobX][3] & [Bootstrap][4],
+[Vue 3][1] project scaffold based on [TypeScript 4][2], [MobX 6][3] & [Bootstrap 5][4],
 which is inspired by [WebCell scaffold][5].
 
 [![NPM Dependency](https://david-dm.org/idea2app/Vue-MobX-Bootstrap-ts.svg)][6]
 [![CI & CD](https://github.com/idea2app/Vue-MobX-Bootstrap-ts/workflows/CI%20&%20CD/badge.svg)][7]
 
+This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+
 ## Knowledge
 
-- [TypeScript][2]
-- [mobx-vue](https://github.com/mobxjs/mobx-vue)
-- [bootstrap-vue](https://bootstrap-vue.org/)
-- [KoAJAX](https://github.com/EasyWebApp/KoAJAX)
+- [TypeScript 4][2]
+- [MobX 6][3]
+- [CoreUI-Vue 4](https://coreui.io/vue/docs/)
+- [KoAJAX 0.7](https://github.com/EasyWebApp/KoAJAX)
 
 ## Extra components
 
@@ -47,9 +49,13 @@ npm run build
 npm test
 ```
 
-### Customize configuration
+## Recommended IDE Setup
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [VSCode][8] + [Volar][9]
+
+### Type Support For `.vue` Imports in TS
+
+Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
 
 [1]: https://vuejs.org/
 [2]: https://www.typescriptlang.org/
@@ -58,3 +64,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 [5]: https://github.com/EasyWebApp/scaffold
 [6]: https://david-dm.org/idea2app/Vue-MobX-Bootstrap-ts
 [7]: https://github.com/idea2app/Vue-MobX-Bootstrap-ts/actions
+[8]: https://code.visualstudio.com/
+[9]: https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar

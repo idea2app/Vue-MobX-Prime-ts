@@ -1,6 +1,6 @@
 <template>
-  <b-overlay :class="{ box: true, show: URI }" :show="loading">
-    <b-img
+  <Overlay :class="{ box: true, show: URI }" color="primary" :show="loading">
+    <CImage
       v-if="URI"
       class="image mw-100 mh-100"
       :style="{ transform: `rotate(${angle}deg)` }"
@@ -14,8 +14,8 @@
       :accept="accept || 'image/*'"
       @change="preview"
     />
-    <b-icon v-if="URI" class="rotate" icon="arrow-repeat" @click="rotate" />
-  </b-overlay>
+    <CIcon v-if="URI" class="rotate" :icon="cilReload" @click="rotate" />
+  </Overlay>
 </template>
 
 <style lang="less" scoped>
@@ -32,6 +32,11 @@
     content: '+';
     font-size: 5rem;
     color: var(--primary);
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
   input[type='file'] {
     position: absolute;
@@ -58,10 +63,16 @@
 }
 </style>
 
-<script lang="ts">
-import Vue from 'vue';
+<script lang="ts" setup>
+import { CImage } from '@coreui/vue';
+import { CIcon } from '@coreui/icons-vue';
+import { cilReload } from '@coreui/icons';
 
-export default Vue.extend({
+import Overlay from './Overlay.vue';
+</script>
+
+<script lang="ts">
+export default {
   props: ['name', 'required', 'disabled', 'accept', 'value', 'upload'],
   data: () => ({
     URI: '',
@@ -69,33 +80,30 @@ export default Vue.extend({
     loading: false
   }),
   watch: {
-    value(this: Vue, path: string) {
+    value(this: any, path: string) {
       this['URI'] = path;
     }
   },
   methods: {
-    async preview(event: Event) {
-      const {
-        name,
-        files: [file]
-      } = event.target as HTMLInputElement;
+    async preview(this: any, event: Event) {
+      const { name, files } = event.target as HTMLInputElement;
 
-      if (!file) return;
+      if (!files?.[0]) return;
 
       const old = this['URI'];
 
       if (old) URL.revokeObjectURL(old);
-      this['URI'] = URL.createObjectURL(file);
+      this['URI'] = URL.createObjectURL(files[0]);
 
       if (this.upload instanceof Function) {
         this.loading = true;
-        await this.upload(name, file);
+        await this.upload(name, files[0]);
         this.loading = false;
       }
     },
-    rotate(this: Vue) {
+    rotate(this: any) {
       this['angle'] += 90;
     }
   }
-});
+};
 </script>

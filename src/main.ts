@@ -1,16 +1,10 @@
-import Vue from 'vue';
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
+import { configure } from 'mobx';
+import { createApp } from 'vue';
+import '@coreui/coreui/dist/css/coreui.min.css';
 
 import App from './App.vue';
 import router from './router';
 
-Vue.config.productionTip = false;
+configure({ enforceActions: 'never' });
 
-Vue.use(BootstrapVue).use(IconsPlugin);
-
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app');
+createApp(App).use(router).mount('#app');

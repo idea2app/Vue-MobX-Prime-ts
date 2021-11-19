@@ -1,11 +1,11 @@
 <template>
   <div class="bs-stepper vertical linear">
     <div class="bs-stepper-header" role="tablist">
-      <template v-for="({ title, icon, disabled }, index) in steps">
-        <div
-          :class="{ step: true, active: step >= index }"
-          :key="'step-button-' + index"
-        >
+      <template
+        v-for="({ title, icon, disabled }, index) in steps"
+        :key="'step-button-' + index"
+      >
+        <div :class="{ step: true, active: step >= index }">
           <button
             type="button"
             class="step-trigger"
@@ -15,7 +15,7 @@
             :disabled="disabled"
           >
             <span class="bs-stepper-circle bg-primary">
-              <b-icon :icon="icon" v-if="icon" />
+              <CIcon :icon="icon" v-if="icon" />
               <template v-else>{{ index + 1 }}</template>
             </span>
             <span class="bs-stepper-label text-dark">{{ title }}</span>
@@ -42,10 +42,12 @@
 }
 </style>
 
-<script lang="ts">
-import Vue from 'vue';
+<script lang="ts" setup>
+import { CIcon } from '@coreui/icons-vue';
+</script>
 
-export default Vue.extend({
+<script lang="ts">
+export default {
   props: ['steps', 'step']
-});
+};
 </script>

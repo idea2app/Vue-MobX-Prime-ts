@@ -1,11 +1,10 @@
 <template>
-  <b-card no-body class="p-0">
-    <b-card-header header-tag="header" role="tab" class="p-0 border-0">
-      <b-button
-        block
+  <CCard class="p-0">
+    <CCardHeader component="header" role="tab" class="p-0 border-0">
+      <CButton
         size="lg"
-        :variant="background || `outline-${border}`"
-        class="px-5 py-3 header"
+        :color="background || `outline-${border}`"
+        class="w-100 px-5 py-3 header"
         :class="{ open: visible || !closable }"
         :aria-controls="id"
         :aria-expanded="visible ? 'true' : 'false'"
@@ -15,15 +14,15 @@
           {{ title }}
         </span>
         <span v-if="closable">
-          <b-icon :icon="`chevron-${visible ? 'up' : 'down'}`" />
+          <CIcon :icon="visible ? cilChevronTop : cilChevronBottom" />
         </span>
-      </b-button>
-    </b-card-header>
-    <b-collapse :id="id" role="tabpanel" :visible="visible" v-if="closable">
-      <b-card-body><slot /></b-card-body>
-    </b-collapse>
-    <b-card-body v-else><slot /></b-card-body>
-  </b-card>
+      </CButton>
+    </CCardHeader>
+    <CCollapse :id="id" role="tabpanel" :visible="visible" v-if="closable">
+      <CCardBody><slot /></CCardBody>
+    </CCollapse>
+    <CCardBody v-else><slot /></CCardBody>
+  </CCard>
 </template>
 
 <style lang="less" scoped>
@@ -45,18 +44,23 @@
 }
 </style>
 
-<script lang="ts">
-import Vue from 'vue';
-import { uniqueID } from 'web-utility/source/data';
+<script lang="ts" setup>
+import { CCard, CCardHeader, CCardBody, CButton, CCollapse } from '@coreui/vue';
+import { CIcon } from '@coreui/icons-vue';
+import { cilChevronTop, cilChevronBottom } from '@coreui/icons';
+</script>
 
-export default Vue.extend({
+<script lang="ts">
+import { uniqueID } from 'web-utility';
+
+export default {
   props: ['background', 'border', 'title', 'open'],
-  data() {
+  data(this: any) {
     return {
       id: uniqueID(),
       visible: this['open'],
       closable: typeof this['open'] === 'boolean'
     };
   }
-});
+};
 </script>
