@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <b-container class="about">
     <h1>Core libraries of this Project scaffold</h1>
     <b-row>
       <b-col
@@ -7,22 +7,20 @@
         cols="12"
         sm="6"
         md="3"
-        v-for="{ id, name, full_name, homepage, html_url } in project.list"
+        v-for="{ id, name, logo, homepage, html_url } in project.list"
         :key="id"
       >
-        <b-card
-          :title="name"
-          img-top
-          :img-src="`https://github.com/${full_name.split('/')[0]}.png`"
-        >
-          <b-button variant="primary" :href="homepage" class="mr-3">
+        <b-card :title="name" img-top :img-src="logo">
+          <b-button variant="primary" size="sm" :href="homepage" class="mr-3">
             Home page
           </b-button>
-          <b-button variant="success" :href="html_url">Source code</b-button>
+          <b-button variant="success" size="sm" :href="html_url">
+            Source code
+          </b-button>
         </b-card>
       </b-col>
     </b-row>
-  </div>
+  </b-container>
 </template>
 
 <script lang="ts">
