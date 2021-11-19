@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "jsx": "preserve",
     "strict": true,
+    "skipLibCheck": true,
     "sourceMap": true,
     "lib": ["ESNext", "DOM"]
   },
