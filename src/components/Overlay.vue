@@ -1,5 +1,5 @@
 <template>
-  <div class="box bg-light rounded-sm" :class="{ show }">
+  <div class="box" :class="{ 'bg-light rounded-sm': show, show }">
     <slot></slot>
 
     <div class="spinner" v-if="show">
@@ -37,5 +37,5 @@
 <script lang="ts" setup>
 import { CSpinner } from '@coreui/vue';
 
-const { color, show } = defineProps<{ color: string; show: boolean }>();
+defineProps<{ color?: string; show?: boolean }>();
 </script>

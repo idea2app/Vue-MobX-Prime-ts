@@ -62,5 +62,5 @@ import {
   CTableDataCell
 } from '@coreui/vue';
 
-const { heads, rows } = defineProps<{ heads: string[]; rows: any[][] }>();
+defineProps<{ heads: string[]; rows: any[][] }>();
 </script>

@@ -13,5 +13,5 @@
 </template>
 
 <script lang="ts" setup>
-const { value, extent } = defineProps<{ value: number; extent: number }>();
+defineProps<{ value: number; extent: number }>();
 </script>

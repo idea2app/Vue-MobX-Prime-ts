@@ -53,7 +53,7 @@ import { CCard, CCardHeader, CCardBody, CButton, CCollapse } from '@coreui/vue';
 import { CIcon } from '@coreui/icons-vue';
 import { cilChevronTop, cilChevronBottom } from '@coreui/icons';
 
-const { background, border, title, open } = defineProps<{
+const { open } = defineProps<{
   background?: string;
   border?: string;
   title: string;

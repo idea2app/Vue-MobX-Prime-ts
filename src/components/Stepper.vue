@@ -50,5 +50,5 @@ interface Step {
   icon?: string;
   disabled?: boolean;
 }
-const { steps, step } = defineProps<{ steps: Step[]; step: number }>();
+defineProps<{ steps: Step[]; step: number }>();
 </script>
