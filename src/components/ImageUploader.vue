@@ -72,7 +72,9 @@ import Overlay from './Overlay.vue';
 </script>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   props: ['name', 'required', 'disabled', 'accept', 'value', 'upload'],
   data: () => ({
     URI: '',
@@ -105,5 +107,5 @@ export default {
       this['angle'] += 90;
     }
   }
-};
+});
 </script>

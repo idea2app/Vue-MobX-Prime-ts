@@ -12,8 +12,6 @@
   </span>
 </template>
 
-<script lang="ts">
-export default {
-  props: ['extent', 'value']
-};
+<script lang="ts" setup>
+const { value, extent } = defineProps<{ value: number; extent: number }>();
 </script>

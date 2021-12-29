@@ -14,7 +14,8 @@
           {{ title }}
         </span>
         <span v-if="closable">
-          <CIcon :icon="visible ? cilChevronTop : cilChevronBottom" />
+          <CIcon :icon="cilChevronTop" v-if="visible" />
+          <CIcon :icon="cilChevronBottom" v-else />
         </span>
       </CButton>
     </CCardHeader>
@@ -45,22 +46,21 @@
 </style>
 
 <script lang="ts" setup>
+import { ref } from 'vue';
+import { uniqueID } from 'web-utility';
+
 import { CCard, CCardHeader, CCardBody, CButton, CCollapse } from '@coreui/vue';
 import { CIcon } from '@coreui/icons-vue';
 import { cilChevronTop, cilChevronBottom } from '@coreui/icons';
-</script>
 
-<script lang="ts">
-import { uniqueID } from 'web-utility';
+const { background, border, title, open } = defineProps<{
+  background: string;
+  border: string;
+  title: string;
+  open?: boolean;
+}>();
 
-export default {
-  props: ['background', 'border', 'title', 'open'],
-  data(this: any) {
-    return {
-      id: uniqueID(),
-      visible: this['open'],
-      closable: typeof this['open'] === 'boolean'
-    };
-  }
-};
+const id = uniqueID(),
+  visible = ref(open),
+  closable = typeof open === 'boolean';
 </script>

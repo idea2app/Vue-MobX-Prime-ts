@@ -52,12 +52,6 @@
 }
 </style>
 
-<script lang="ts">
-export default {
-  props: ['heads', 'rows']
-};
-</script>
-
 <script lang="ts" setup>
 import {
   CTable,
@@ -67,4 +61,6 @@ import {
   CTableBody,
   CTableDataCell
 } from '@coreui/vue';
+
+const { heads, rows } = defineProps<{ heads: string[]; rows: any[][] }>();
 </script>

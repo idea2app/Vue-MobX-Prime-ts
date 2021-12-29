@@ -44,10 +44,11 @@
 
 <script lang="ts" setup>
 import { CIcon } from '@coreui/icons-vue';
-</script>
 
-<script lang="ts">
-export default {
-  props: ['steps', 'step']
-};
+interface Step {
+  title: string;
+  icon?: string;
+  disabled?: boolean;
+}
+const { steps, step } = defineProps<{ steps: Step[]; step: number }>();
 </script>

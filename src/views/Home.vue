@@ -1,9 +1,8 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld
-      msg="Welcome to Your Vue.js + TypeScript + MobX + Bootstrap App"
-    />
+
+    <HelloWorld msg="Welcome to Your Vue.js + TypeScript + Bootstrap App" />
   </div>
 </template>
 

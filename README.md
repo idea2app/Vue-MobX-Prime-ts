@@ -1,17 +1,16 @@
-# Vue-MobX-Bootstrap.ts
+# Vue-Bootstrap.ts
 
-[Vue 3][1] project scaffold based on [TypeScript 4][2], [MobX 6][3] & [Bootstrap 5][4],
-which is inspired by [WebCell scaffold][5].
+[Vue 3][1] project scaffold based on [TypeScript 4][2] & [Bootstrap 5][3],
+which is inspired by [WebCell scaffold][4].
 
-[![NPM Dependency](https://david-dm.org/idea2app/Vue-MobX-Bootstrap-ts.svg)][6]
-[![CI & CD](https://github.com/idea2app/Vue-MobX-Bootstrap-ts/workflows/CI%20&%20CD/badge.svg)][7]
+[![NPM Dependency](https://david-dm.org/idea2app/Vue-Bootstrap-ts.svg)][5]
+[![CI & CD](https://github.com/idea2app/Vue-Bootstrap-ts/workflows/CI%20&%20CD/badge.svg)][6]
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs][7] to learn more.
 
 ## Knowledge
 
 - [TypeScript 4][2]
-- [MobX 6][3]
 - [CoreUI-Vue 4](https://coreui.io/vue/docs/)
 - [KoAJAX 0.7](https://github.com/EasyWebApp/KoAJAX)
 
@@ -59,10 +58,10 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 
 [1]: https://vuejs.org/
 [2]: https://www.typescriptlang.org/
-[3]: https://mobx.js.org/
-[4]: https://getbootstrap.com/
-[5]: https://github.com/EasyWebApp/scaffold
-[6]: https://david-dm.org/idea2app/Vue-MobX-Bootstrap-ts
-[7]: https://github.com/idea2app/Vue-MobX-Bootstrap-ts/actions
+[3]: https://getbootstrap.com/
+[4]: https://github.com/EasyWebApp/scaffold
+[5]: https://david-dm.org/idea2app/Vue-Bootstrap-ts
+[6]: https://github.com/idea2app/Vue-Bootstrap-ts/actions
+[7]: https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 [8]: https://code.visualstudio.com/
 [9]: https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar

@@ -1,4 +1,4 @@
-import { makeObservable, observable, action } from 'mobx';
+import { reactive } from 'vue';
 import { components } from '@octokit/openapi-types';
 
 import { service } from './service';
@@ -8,19 +8,18 @@ export type Project = components['schemas']['minimal-repository'] & {
 };
 
 export class ProjectStore {
-  @observable
   list: Project[] = [];
 
   constructor() {
-    makeObservable(this);
+    return reactive(this);
   }
 
-  @action
   async getList(...names: string[]) {
     for (const name of names) {
       const { body } = await service.get<Project>(`repos/${name}`);
 
       const logo = await ProjectStore.getLogo(body!.owner!.login, body!.name);
+
       this.list.push({ ...body!, logo });
     }
     return this.list;

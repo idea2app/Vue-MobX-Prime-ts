@@ -34,12 +34,8 @@
 }
 </style>
 
-<script lang="ts">
-export default {
-  props: ['show', 'color']
-};
-</script>
-
 <script lang="ts" setup>
 import { CSpinner } from '@coreui/vue';
+
+const { color, show } = defineProps<{ color: string; show: boolean }>();
 </script>
