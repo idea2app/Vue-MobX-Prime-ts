@@ -54,8 +54,8 @@ import { CIcon } from '@coreui/icons-vue';
 import { cilChevronTop, cilChevronBottom } from '@coreui/icons';
 
 const { background, border, title, open } = defineProps<{
-  background: string;
-  border: string;
+  background?: string;
+  border?: string;
   title: string;
   open?: boolean;
 }>();
