@@ -18,9 +18,9 @@
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
   </p>
 
-  <CButton type="button" color="primary" @click="count++">
+  <Button type="button" severity="primary" @click="count++">
     count is: {{ count }}
-  </CButton>
+  </Button>
   <p>
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
@@ -29,7 +29,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { CButton } from '@coreui/vue';
 
 defineProps<{ msg: string }>();
 

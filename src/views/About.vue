@@ -1,61 +1,41 @@
 <template>
-  <CContainer class="about">
-    <h1>Core libraries of this Project scaffold</h1>
-    <CRow>
-      <CCol
-        class="mb-3"
-        xs="12"
-        sm="6"
-        md="3"
-        v-for="{ id, name, logo, homepage, html_url } in project.list"
-        :key="id"
-      >
-        <CCard>
-          <CCardImage orientation="top" :src="logo" />
-          <CCardBody>
-            <CCardTitle>{{ name }}</CCardTitle>
-          </CCardBody>
-          <CCardFooter class="d-flex justify-content-around">
-            <CButton
-              component="a"
-              color="primary"
-              size="sm"
-              :href="homepage || ''"
-              class="mr-3"
-            >
-              Home page
-            </CButton>
-            <CButton component="a" color="success" size="sm" :href="html_url">
-              Source code
-            </CButton>
-          </CCardFooter>
-        </CCard>
-      </CCol>
-    </CRow>
-  </CContainer>
+  <h1>Core libraries of this Project scaffold</h1>
+
+  <div class="grid">
+    <div
+      class="col-12 sm:col-6 lg:col-3"
+      v-for="item in project.list"
+      :key="item.id"
+    >
+      <Card>
+        <template #header>
+          <img class="w-full" :src="item.logo" />
+        </template>
+        <template #title>{{ item.name }}</template>
+        <template #content>
+          <p class="m-0">{{ item.description }}</p>
+        </template>
+        <template #footer>
+          <div class="flex gap-3 mt-1">
+            <a class="block w-full" target="_blank" :href="item.homepage || ''">
+              <Button severity="primary" outlined>Home page</Button>
+            </a>
+            <a class="block w-full" target="_blank" :href="item.html_url">
+              <Button severity="success">Source code</Button>
+            </a>
+          </div>
+        </template>
+      </Card>
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { onMounted } from 'vue';
-import {
-  CContainer,
-  CRow,
-  CCol,
-  CCard,
-  CCardImage,
-  CCardBody,
-  CCardTitle,
-  CCardFooter,
-  CButton
-} from '@coreui/vue';
 
 import project from '../models/Project';
 
 onMounted(() =>
-  project.getList(
-    'vuejs/vue',
-    'bootstrap-vue/bootstrap-vue',
-    'microsoft/TypeScript'
-  )
+  project.getList('vuejs/vue', 'primefaces/primevue', 'microsoft/TypeScript')
 );
 </script>

@@ -3,7 +3,7 @@
     <slot></slot>
 
     <div class="spinner" v-if="show">
-      <CSpinner :color="color" />
+      <ProgressSpinner />
     </div>
   </div>
 </template>
@@ -35,7 +35,5 @@
 </style>
 
 <script lang="ts" setup>
-import { CSpinner } from '@coreui/vue';
-
-defineProps<{ color?: string; show?: boolean }>();
+defineProps<{ show?: boolean }>();
 </script>

@@ -1,9 +1,9 @@
 <template>
   <span
     :class="{
-      'text-danger': extent > 0,
-      'text-secondary': extent === 0,
-      'text-success': extent < 0
+      'text-red-500': extent > 0,
+      'text-gray-500': extent === 0,
+      'text-green-500': extent < 0
     }"
   >
     <slot name="before" />

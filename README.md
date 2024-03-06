@@ -1,9 +1,9 @@
-# Vue-Bootstrap.ts
+# Vue-Prime.ts
 
-[Vue 3][1] project scaffold based on [TypeScript 5][2] & [Bootstrap 5][3],
+[Vue 3][1] project scaffold based on [TypeScript 5][2] & [PrimeVue 3][3],
 which is inspired by [WebCell scaffold][4].
 
-[![CI & CD](https://github.com/idea2app/Vue-Bootstrap-ts/actions/workflows/main.yml/badge.svg)][5]
+[![CI & CD](https://github.com/idea2app/Vue-Prime-ts/actions/workflows/main.yml/badge.svg)][5]
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)][6]
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)][7]
@@ -13,16 +13,15 @@ This template should help get you started developing with Vue 3 and Typescript i
 ## Knowledge
 
 - [TypeScript 5][2]
-- [CoreUI-Vue 4](https://coreui.io/vue/docs/)
+- [PrimeVue 3](https://primevue.org/)
 - [KoAJAX 0.9](https://github.com/EasyWebApp/KoAJAX)
 - [Vite 5](https://vitejs.dev/)
 
 ## Extra components
 
 - [`<StockNumber />`](src/components/StockNumber.vue)
-- [`<Panel />`](src/components/Panel.vue)
-- [`<Stepper />`](src/components/Stepper.vue)
-- [`<Table />`](src/components/Table.vue)
+- [`<Overlay />`](src/components/Overlay.vue)
+- [`<Image />`](src/components/Image.vue)
 - [`<ImageUploader />`](src/components/ImageUploader.vue)
 
 ## Usage
@@ -62,11 +61,11 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 
 [1]: https://vuejs.org/
 [2]: https://www.typescriptlang.org/
-[3]: https://getbootstrap.com/
+[3]: https://primevue.org/
 [4]: https://github.com/EasyWebApp/scaffold
-[5]: https://github.com/idea2app/Vue-Bootstrap-ts/actions/workflows/main.yml
-[6]: https://codespaces.new/idea2app/Vue-Bootstrap-ts
-[7]: https://gitpod.io/?autostart=true#https://github.com/idea2app/Vue-Bootstrap-ts
+[5]: https://github.com/idea2app/Vue-Prime-ts/actions/workflows/main.yml
+[6]: https://codespaces.new/idea2app/Vue-Prime-ts
+[7]: https://gitpod.io/?autostart=true#https://github.com/idea2app/Vue-Prime-ts
 [8]: https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 [9]: https://code.visualstudio.com/
-[10]: https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar
+[10]: https://marketplace.visualstudio.com/items?itemName=vue.volar
