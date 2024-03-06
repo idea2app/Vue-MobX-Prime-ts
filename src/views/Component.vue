@@ -1,5 +1,5 @@
 <template>
-  <CContainer class="text-left">
+  <div class="text-left">
     <h2>Stock Number</h2>
     <StockNumber :extent="0.3" :value="0.3">
       <span slot="after">%</span>
@@ -9,25 +9,34 @@
     </StockNumber>
 
     <h2 class="mt-4">Panel</h2>
-    <Panel :open="true" title="Panel">Content</Panel>
+    <Panel toggleable header="Panel">Content</Panel>
 
     <h2 class="mt-4">Stepper</h2>
-    <Stepper :steps="[{ title: 'first' }, { title: 'second' }]" :step="0" />
+
+    <Stepper orientation="vertical">
+      <StepperPanel header="first"></StepperPanel>
+      <StepperPanel header="second"></StepperPanel>
+    </Stepper>
 
     <h2 class="mt-4">Table</h2>
-    <Table
-      :heads="['A', 'B']"
-      :rows="[
-        [1, 2],
-        [3, 4],
-        [5, 6]
+    <DataTable
+      class="table-center"
+      stripedRows
+      :value="[
+        { A: 1, B: 2 },
+        { A: 3, B: 4 },
+        { A: 5, B: 6 }
       ]"
-    />
+    >
+      <Column field="A" header="A" />
+      <Column field="B" header="B" />
+    </DataTable>
+
     <h2 class="mt-4">Tree</h2>
-    <Tree class="text-start" v-bind="tree" />
+    <Tree class="text-start" :value="tree" />
 
     <h2 class="mt-4">Date Range</h2>
-    <DateRange type="date" />
+    <Calendar selectionMode="range" v-model="date" />
 
     <h2 class="mt-4">Image</h2>
     <Image src="https://github.com/idea2app.png" />
@@ -36,50 +45,63 @@
     <ImageUploader class="mb-4" />
 
     <h2 class="mt-4">Dialog</h2>
-    <CButton color="primary" @click="openDialog = true">Open Dialog</CButton>
+    <Button severity="primary" @click="openDialog = true">Open Dialog</Button>
 
-    <Dialog title="form" :open="openDialog" @close="closeDialog">
-      <CRow>
-        <CFormLabel for="example-input" class="col-sm-2 col-form-label">
-          input
-        </CFormLabel>
-        <div class="col-sm-10">
-          <CFormInput id="example-input" name="test" required />
+    <Dialog modal header="form" :visible="openDialog">
+      <form @submit.prevent="closeDialog" @reset="closeDialog">
+        <FloatLabel class="my-3">
+          <InputText id="example-input" name="test" required />
+          <label for="example-input">input</label>
+        </FloatLabel>
+        <div class="flex justify-content-around">
+          <Button type="submit">submit</Button>
+          <Button type="reset" severity="danger">close</Button>
         </div>
-      </CRow>
+      </form>
     </Dialog>
 
     <h2 class="mt-4">Confirm</h2>
-    <CButton color="primary" @click="openConfirm = true">Open Confirm</CButton>
-
-    <Confirm title="Confirm" :open="openConfirm" @close="closeConfirm">
-      Yes or No ?
-    </Confirm>
-  </CContainer>
+    <Button severity="primary" @click="openConfirm()">Open Confirm</Button>
+    <ConfirmDialog />
+  </div>
 </template>
+
+<style lang="less">
+.table-center {
+  th .p-column-header-content {
+    justify-content: center;
+  }
+  th,
+  td {
+    text-align: center;
+  }
+}
+</style>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { CContainer, CRow, CButton, CFormLabel, CFormInput } from '@coreui/vue';
+
+import Stepper from 'primevue/stepper';
+import StepperPanel from 'primevue/stepperpanel';
+import FloatLabel from 'primevue/floatlabel';
+import { useConfirm } from 'primevue/useconfirm';
+import ConfirmDialog from 'primevue/confirmdialog';
 
 import StockNumber from '../components/StockNumber.vue';
-import Panel from '../components/Panel.vue';
-import Stepper from '../components/Stepper.vue';
-import Table from '../components/Table.vue';
-import Tree from '../components/Tree.vue';
-import DateRange from '../components/DateRange.vue';
 import Image from '../components/Image.vue';
 import ImageUploader from '../components/ImageUploader.vue';
-import Dialog from '../components/Dialog.vue';
-import Confirm from '../components/Confirm.vue';
 
-const tree = {
-  title: 'node 0',
-  children: [
-    { title: 'node 1.1' },
-    { title: 'node 1.2', children: [{ title: 'node 2.1' }] }
-  ]
-};
+const date = ref();
+
+const tree = [
+  {
+    label: 'node 0',
+    children: [
+      { label: 'node 1.1' },
+      { label: 'node 1.2', children: [{ label: 'node 2.1' }] }
+    ]
+  }
+];
 const openDialog = ref(false);
 
 function closeDialog(data: any) {
@@ -88,11 +110,13 @@ function closeDialog(data: any) {
   console.log(data);
 }
 
-const openConfirm = ref(false);
+const confirm = useConfirm();
 
-function closeConfirm(data: any) {
-  openConfirm.value = false;
-
-  console.log(data);
-}
+const openConfirm = () =>
+  confirm.require({
+    header: 'Confirm',
+    message: 'Yes or No ?',
+    accept: console.info,
+    reject: console.error
+  });
 </script>

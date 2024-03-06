@@ -1,8 +1,8 @@
 <template>
   <Overlay :class="{ box: true, show: URI }" color="primary" :show="loading">
-    <CImage
+    <img
       v-if="URI"
-      class="image mw-100 mh-100"
+      class="image max-w-full max-h-full"
       :style="{ transform: `rotate(${angle}deg)` }"
       :src="URI"
     />
@@ -14,7 +14,7 @@
       :accept="accept || 'image/*'"
       @change="preview"
     />
-    <CIcon v-if="URI" class="rotate" :icon="cilReload" @click="rotate" />
+    <i v-if="URI" class="pi pi-refresh rotate" @click="rotate" />
   </Overlay>
 </template>
 
@@ -64,10 +64,6 @@
 </style>
 
 <script lang="ts" setup>
-import { CImage } from '@coreui/vue';
-import { CIcon } from '@coreui/icons-vue';
-import { cilReload } from '@coreui/icons';
-
 import Overlay from './Overlay.vue';
 </script>
 

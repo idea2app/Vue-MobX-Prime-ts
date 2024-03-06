@@ -1,12 +1,8 @@
 {
-  "name": "vue-bootstrap-ts",
+  "name": "vue-prime-ts",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@coreui/coreui": "^4.3.2",
-    "@coreui/icons": "^3.0.1",
-    "@coreui/icons-vue": "^2.0.0",
-    "@coreui/vue": "^4.10.2",
     "koajax": "^0.9.6",
     "primevue": "^3.49.1",
     "vue": "^3.4.21",

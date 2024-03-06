@@ -5,18 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@coreui/coreui':
-    specifier: ^4.3.2
-    version: 4.3.2
-  '@coreui/icons':
-    specifier: ^3.0.1
-    version: 3.0.1
-  '@coreui/icons-vue':
-    specifier: ^2.0.0
-    version: 2.0.0(vue@3.4.21)
-  '@coreui/vue':
-    specifier: ^4.10.2
-    version: 4.10.2(@coreui/coreui@4.3.2)(vue@3.4.21)
   koajax:
     specifier: ^0.9.6
     version: 0.9.6(typescript@5.3.3)
@@ -1246,38 +1234,6 @@ packages:
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
 
-  /@coreui/coreui@4.3.2:
-    resolution: {integrity: sha512-SKGY6E6v7QGq0P3YTnZQRSrU8t0euLQ3UV/FH5j0JmHYBBu7Mv0Hd9g8AESnj8xrCelKZ5bdZKZhmKaIdG5clw==}
-    peerDependencies:
-      '@popperjs/core': ^2.11.6
-    dependencies:
-      postcss-combine-duplicated-selectors: 10.0.3
-    transitivePeerDependencies:
-      - postcss
-    dev: false
-
-  /@coreui/icons-vue@2.0.0(vue@3.4.21):
-    resolution: {integrity: sha512-3OLOv6TExmi93kapV4n9kmJ36fqxTHv3Vn/SPGAUX1btwf0wCmXen4xF3A8OdLEwR0i6Ggqw+MY/T7WjA6k2xg==}
-    peerDependencies:
-      vue: ^3.2.20
-    dependencies:
-      vue: 3.4.21(typescript@5.3.3)
-    dev: false
-
-  /@coreui/icons@3.0.1:
-    resolution: {integrity: sha512-u9UKEcRMyY9pa4jUoLij8pAR03g5g6TLWV33/Mx2ix8sffyi0eO4fLV8DSTQljDCw938zt7KYog5cVKEAJUxxg==}
-    dev: false
-
-  /@coreui/vue@4.10.2(@coreui/coreui@4.3.2)(vue@3.4.21):
-    resolution: {integrity: sha512-2HGgIRjH1SIdmYa4vLwhPAQXdrsTDrHfXTOwVKm0LiYTkg0vIudbFIugGPphgkPNKp5eMCJ40UnpowYigzZggQ==}
-    peerDependencies:
-      '@coreui/coreui': ^4.2.6
-      vue: ^3.2.21
-    dependencies:
-      '@coreui/coreui': 4.3.2
-      vue: 3.4.21(typescript@5.3.3)
-    dev: false
-
   /@esbuild/aix-ppc64@0.19.12:
     resolution: {integrity: sha512-bmoCYyWdEL3wDQIVbcyzRyeKLgk2WtWLTWz1ZIAZF/EGbNOwSA6ew3PftJ1PqMiOOGu0OyFMzG53L0zqIpPeNA==}
     engines: {node: '>=12'}
@@ -2028,12 +1984,6 @@ packages:
       which: 2.0.2
     dev: true
 
-  /cssesc@3.0.0:
-    resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
-    engines: {node: '>=4'}
-    hasBin: true
-    dev: false
-
   /csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
@@ -2612,23 +2562,6 @@ packages:
     dev: true
     optional: true
 
-  /postcss-combine-duplicated-selectors@10.0.3:
-    resolution: {integrity: sha512-IP0BmwFloCskv7DV7xqvzDXqMHpwdczJa6ZvIW8abgHdcIHs9mCJX2ltFhu3EwA51ozp13DByng30+Ke+eIExA==}
-    engines: {node: ^10.0.0 || ^12.0.0 || >=14.0.0}
-    peerDependencies:
-      postcss: ^8.1.0
-    dependencies:
-      postcss-selector-parser: 6.0.15
-    dev: false
-
-  /postcss-selector-parser@6.0.15:
-    resolution: {integrity: sha512-rEYkQOMUCEMhsKbK66tbEU9QVIxbhN18YiniAwA7XQYTVBqrBy+P2p5JcdqsHgKM2zWylp8d7J6eszocfds5Sw==}
-    engines: {node: '>=4'}
-    dependencies:
-      cssesc: 3.0.0
-      util-deprecate: 1.0.2
-    dev: false
-
   /postcss@8.4.35:
     resolution: {integrity: sha512-u5U8qYpBCpN13BsiEB0CbR1Hhh4Gc0zLFuedrHJKMctHCHAGrMdG0PRM/KErzAL3CU6/eckEtmHNB3x6e3c0vA==}
     engines: {node: ^10 || ^12 || >=14}
@@ -2995,10 +2928,6 @@ packages:
       escalade: 3.1.2
       picocolors: 1.0.0
     dev: true
-
-  /util-deprecate@1.0.2:
-    resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
-    dev: false
 
   /vite@5.1.5(less@4.2.0)(terser@5.28.1):
     resolution: {integrity: sha512-BdN1xh0Of/oQafhU+FvopafUp6WaYenLU/NFoL5WyJL++GxkNfieKzBhM24H3HVsPQrlAqB7iJYTHabzaRed5Q==}
