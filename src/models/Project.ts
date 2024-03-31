@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
-import { components } from '@octokit/openapi-types';
+import type { components } from '@octokit/openapi-types';
 
 import { service } from './service';
 

@@ -32,6 +32,8 @@
 
 <script lang="ts" setup>
 import { onMounted } from 'vue';
+import Button from 'primevue/button';
+import Card from 'primevue/card';
 
 import project from '../models/Project';
 

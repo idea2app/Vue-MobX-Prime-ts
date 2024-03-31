@@ -35,5 +35,7 @@
 </style>
 
 <script lang="ts" setup>
+import ProgressSpinner from 'primevue/progressspinner';
+
 defineProps<{ show?: boolean }>();
 </script>
