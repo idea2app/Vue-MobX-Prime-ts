@@ -44,6 +44,10 @@
     <h2 class="mt-4">Image Uploader</h2>
     <ImageUploader class="mb-4" />
 
+    <h2 class="mt-4">Downloader</h2>
+    <Button @click="download">download</Button>
+    <Downloader class="mt-4" />
+
     <h2 class="mt-4">Dialog</h2>
     <Button severity="primary" @click="openDialog = true">Open Dialog</Button>
 
@@ -81,15 +85,26 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
+import Button from 'primevue/button';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import Panel from 'primevue/panel';
 import Stepper from 'primevue/stepper';
 import StepperPanel from 'primevue/stepperpanel';
+import Tree from 'primevue/tree';
+import Calendar from 'primevue/calendar';
 import FloatLabel from 'primevue/floatlabel';
+import InputText from 'primevue/inputtext';
+import Dialog from 'primevue/dialog';
 import { useConfirm } from 'primevue/useconfirm';
 import ConfirmDialog from 'primevue/confirmdialog';
 
 import StockNumber from '../components/StockNumber.vue';
 import Image from '../components/Image.vue';
 import ImageUploader from '../components/ImageUploader.vue';
+import Downloader from '../components/Downloader.vue';
+
+import downloader from '../models/Downloader';
 
 const date = ref();
 
@@ -102,6 +117,21 @@ const tree = [
     ]
   }
 ];
+
+async function download() {
+  const task = await downloader.createTask(
+    'test',
+    'https://ows.blob.core.chinacloudapi.cn/$web/file/001%E6%B1%9F%E6%B3%A2.png'
+  );
+
+  try {
+    for await (const { percent } of task.start({ chunkSize: 1024 ** 2 }))
+      console.log(percent);
+  } catch {
+    downloader.destroyTask('test');
+  }
+}
+
 const openDialog = ref(false);
 
 function closeDialog(data: any) {
