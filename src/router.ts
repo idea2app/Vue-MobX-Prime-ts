@@ -15,6 +15,10 @@ export default createRouter({
       component: () => import('./views/Component.vue')
     },
     {
+      path: '/chart',
+      component: () => import('./views/Chart.vue')
+    },
+    {
       path: '/about',
       name: 'About',
       // route level code-splitting

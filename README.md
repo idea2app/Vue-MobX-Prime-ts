@@ -14,7 +14,8 @@ This template should help get you started developing with Vue 3 and Typescript i
 
 - [TypeScript 5][2]
 - [PrimeVue 3](https://primevue.org/)
-- [KoAJAX 0.9](https://github.com/EasyWebApp/KoAJAX)
+- [ECharts-JSX 1](https://github.com/idea2app/ECharts-JSX)
+- [KoAJAX 1](https://github.com/EasyWebApp/KoAJAX)
 - [Vite 5](https://vitejs.dev/)
 
 ## Extra components
@@ -23,6 +24,7 @@ This template should help get you started developing with Vue 3 and Typescript i
 - [`<Overlay />`](src/components/Overlay.vue)
 - [`<Image />`](src/components/Image.vue)
 - [`<ImageUploader />`](src/components/ImageUploader.vue)
+- [`<Downloader />`](src/components/Downloader.vue)
 
 ## Usage
 
