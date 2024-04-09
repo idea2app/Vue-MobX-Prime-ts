@@ -6,7 +6,13 @@ import legacy from '@vitejs/plugin-legacy';
 export default defineConfig({
   base: '',
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: tag => tag.startsWith('ec-')
+        }
+      }
+    }),
     legacy({
       targets: ['> 1%', 'last 2 versions', 'not dead'],
       additionalLegacyPolyfills: ['regenerator-runtime/runtime']
