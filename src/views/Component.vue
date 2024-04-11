@@ -125,7 +125,7 @@ async function download() {
   );
 
   try {
-    for await (const { percent } of task.start({ chunkSize: 1024 ** 2 }))
+    for await (const { percent } of task.start({ chunkSize: 1024 ** 2 / 2 }))
       console.log(percent);
   } catch {
     downloader.destroyTask('test');

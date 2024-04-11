@@ -22,7 +22,14 @@
             </div>
           </div>
         </template>
-        <template #content><ProgressBar :value="task.percent" /></template>
+        <template #content>
+          <ProgressBar
+            :mode="
+              task.executing && !task.percent ? 'indeterminate' : 'determinate'
+            "
+            :value="task.percent"
+          />
+        </template>
       </Card>
     </li>
   </ol>

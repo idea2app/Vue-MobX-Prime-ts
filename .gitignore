@@ -1,7 +1,7 @@
 node_modules
 package-lock.json
 yarn.lock
-components.d.ts
+.parcel-cache/
 dist
 dist-ssr
 *.local
