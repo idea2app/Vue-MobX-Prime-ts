@@ -4,7 +4,8 @@
     "useDefineForClassFields": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "lib": ["ESNext", "DOM"]
+    "lib": ["ESNext", "DOM"],
+    "types": ["node"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
