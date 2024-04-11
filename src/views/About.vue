@@ -38,6 +38,13 @@ import Card from 'primevue/card';
 import project from '../models/Project';
 
 onMounted(() =>
-  project.getList('vuejs/vue', 'primefaces/primevue', 'microsoft/TypeScript')
+  project.getList(
+    'vuejs/vue',
+    'primefaces/primevue',
+    'idea2app/ECharts-JSX',
+    'EasyWebApp/KoAJAX',
+    'microsoft/TypeScript',
+    'parcel-bundler/parcel'
+  )
 );
 </script>

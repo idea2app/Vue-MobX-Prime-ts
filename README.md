@@ -16,7 +16,7 @@ This template should help get you started developing with Vue 3 and Typescript i
 - [PrimeVue 3](https://primevue.org/)
 - [ECharts-JSX 1](https://github.com/idea2app/ECharts-JSX)
 - [KoAJAX 1](https://github.com/EasyWebApp/KoAJAX)
-- [Vite 5](https://vitejs.dev/)
+- [Parcel 2](https://parceljs.org/)
 
 ## Extra components
 
