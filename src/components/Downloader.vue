@@ -5,14 +5,17 @@
         <template #title>
           <div class="flex justify-content-between align-items-center">
             {{ task.name }}
-            <div>
+            <div class="flex align-items-center">
+              <small class="font-normal text-sm">
+                {{ task.totalSize.toShortString() }}
+              </small>
               <template v-if="task.percent < 100">
                 <IconButton
                   v-if="task.executing"
                   icon="pause"
                   @click="() => task.pause()"
                 />
-                <IconButton v-else icon="play" @click="() => task.restart()" />
+                <IconButton v-else icon="play" @click="() => task.resume()" />
               </template>
               <IconButton
                 v-if="!task.executing"
