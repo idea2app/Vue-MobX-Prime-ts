@@ -17,7 +17,7 @@ export class HTTPDownloadTask extends DownloadTask {
   ) {
     super(name, path);
 
-    this.id = `download-task-${name}`;
+    this.id = `http-download-task-${name}`;
   }
 
   async *start(options: DownloadOptions = {}) {
@@ -40,6 +40,8 @@ export class HTTPDownloadTask extends DownloadTask {
       });
 
     try {
+      await this.saveMeta();
+
       for await (const chunk of stream) {
         this.executing = true;
 

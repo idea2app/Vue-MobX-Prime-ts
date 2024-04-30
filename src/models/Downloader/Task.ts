@@ -1,36 +1,8 @@
 import { del, get, set } from 'idb-keyval';
 import { type TransferProgress } from 'koajax';
 import type { FileSystemHandle } from 'native-file-system-adapter';
-import { reactive } from 'vue';
-
-export abstract class Scalar {
-  abstract units: { base: number; name: string }[];
-
-  constructor(public value: number) {}
-
-  valueOf() {
-    return this.value;
-  }
-
-  toShortString(fractionDigits = 2) {
-    const { units, value } = this;
-    const { base, name } =
-      units.findLast(({ base }) => Math.abs(value) >= base) || units[0];
-
-    return `${(value / base).toFixed(fractionDigits)} ${name}`;
-  }
-
-  static distanceOf(a: Scalar, b: Scalar) {
-    return Reflect.construct(this, [a.value - b.value]);
-  }
-}
-
-export class FileSize extends Scalar {
-  units = ['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'].map((name, i) => ({
-    base: 1024 ** i,
-    name: name + 'B'
-  }));
-}
+import { isReactive, reactive, toRaw } from 'vue';
+import { ByteSize } from 'web-utility';
 
 export abstract class DownloadTask implements Partial<TransferProgress> {
   id = '';
@@ -42,7 +14,7 @@ export abstract class DownloadTask implements Partial<TransferProgress> {
   pausing = Promise.withResolvers<void>();
 
   get totalSize() {
-    return new FileSize(this.total);
+    return new ByteSize(this.total);
   }
 
   constructor(
@@ -61,25 +33,30 @@ export abstract class DownloadTask implements Partial<TransferProgress> {
     return { id, name, path, fsHandle, total, loaded, percent, executing };
   }
 
-  async saveMeta(data: Partial<Omit<TransferProgress, 'buffer'>> = {}) {
-    const meta = Object.assign(this, data).toJSON();
+  async saveMeta(data: Partial<TransferProgress> = {}) {
+    const { buffer, ...progress } = data;
+    const meta = Object.assign(this, progress).toJSON();
 
     for (const key in meta) {
       const value = Reflect.get(meta, key);
 
-      if (
-        value &&
-        typeof value === 'object' &&
-        typeof Reflect.get(value, 'toJSON') === 'function'
-      )
-        Reflect.set(meta, key, JSON.parse(JSON.stringify(value)));
+      if (value && typeof value === 'object')
+        Reflect.set(
+          meta,
+          key,
+          typeof Reflect.get(value, 'toJSON') === 'function'
+            ? JSON.parse(JSON.stringify(value))
+            : isReactive(value)
+              ? toRaw(value)
+              : value
+        );
     }
     await set(this.id, meta);
 
-    return this;
+    return data;
   }
 
-  abstract start(...options: any[]): AsyncGenerator<this>;
+  abstract start(...options: any[]): AsyncGenerator<Partial<TransferProgress>>;
 
   async pause() {
     this.executing = false;
@@ -91,8 +68,8 @@ export abstract class DownloadTask implements Partial<TransferProgress> {
     this.pausing.resolve();
   }
 
-  destroy() {
-    this.pause();
+  async destroy() {
+    await this.pause();
 
     return del(this.id);
   }
