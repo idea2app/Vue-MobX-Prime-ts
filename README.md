@@ -13,10 +13,10 @@ This template should help get you started developing with Vue 3 and Typescript i
 ## Knowledge
 
 - [TypeScript 5][2]
-- [PrimeVue 3](https://primevue.org/)
-- [ECharts-JSX 1](https://github.com/idea2app/ECharts-JSX)
-- [KoAJAX 1](https://github.com/EasyWebApp/KoAJAX)
-- [Parcel 2](https://parceljs.org/)
+- [PrimeVue 3][3]
+- [ECharts-JSX 1][9]
+- [KoAJAX 1][10]
+- [Parcel 2][11]
 
 ## Extra components
 
@@ -25,6 +25,25 @@ This template should help get you started developing with Vue 3 and Typescript i
 - [`<Image />`](src/components/Image.vue)
 - [`<ImageUploader />`](src/components/ImageUploader.vue)
 - [`<Downloader />`](src/components/Downloader.vue)
+
+## Best practice
+
+1. Install GitHub apps in your organization or account:
+
+   1. [Probot settings][12]: set up Issue labels & Pull Request rules
+   2. [PR badge][13]: set up Online [VS Code][14] editor entries in Pull Request description
+
+2. Click the **[Use this template][15] button** on the top of this GitHub repository's home page, then create your own repository in the app-installed namespace above
+
+3. Click the **[Open in GitHub codespaces][6] button** on the top of ReadMe file, then an **online VS Code development environment** will be started immediately
+
+4. Set [Vercel variables][16] as [Repository secrets][17], then every commit will get an independent **Preview URL**
+
+5. Recommend to add a [Notification step in GitHub actions][18] for your Team IM app
+
+6. Remind the PMs & users of your product to submit **Feature/Enhancement** requests or **Bug** reports with [Issue forms][19] instead of IM messages or Mobile Phone calls
+
+7. Collect all these issues into [Project kanbans][20], then create **Pull requests** & add `closes #issue_number` into its description for automation
 
 ## Usage
 
@@ -55,7 +74,7 @@ npm test
 
 ## Recommended IDE Setup
 
-- [VSCode][9] + [Volar][10]
+- [VSCode][14] + [Volar][21]
 
 ### Type Support For `.vue` Imports in TS
 
@@ -69,5 +88,16 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 [6]: https://codespaces.new/idea2app/Vue-Prime-ts
 [7]: https://gitpod.io/?autostart=true#https://github.com/idea2app/Vue-Prime-ts
 [8]: https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-[9]: https://code.visualstudio.com/
-[10]: https://marketplace.visualstudio.com/items?itemName=vue.volar
+[9]: https://github.com/idea2app/ECharts-JSX
+[10]: https://github.com/EasyWebApp/KoAJAX
+[11]: https://parceljs.org/
+[12]: https://probot.github.io/apps/settings/
+[13]: https://pullrequestbadge.com/
+[14]: https://code.visualstudio.com/
+[15]: https://github.com/new?template_name=Vue-Prime-ts&template_owner=idea2app
+[16]: https://github.com/idea2app/Next-Bootstrap-ts/blob/80967ed49045af9dbcf4d3695a2c39d53a6f71f1/.github/workflows/pull-request.yml#L9-L11
+[17]: https://github.com/idea2app/Vue-Prime-ts/settings/secrets/actions
+[18]: https://github.com/kaiyuanshe/kaiyuanshe.github.io/blob/bb4675a56bf1d6b207231313da5ed0af7cf0ebd6/.github/workflows/pull-request.yml#L32-L56
+[19]: https://github.com/idea2app/Vue-Prime-ts/issues/new/choose
+[20]: https://github.com/idea2app/Vue-Prime-ts/projects
+[21]: https://marketplace.visualstudio.com/items?itemName=vue.volar
