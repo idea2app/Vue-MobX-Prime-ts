@@ -4,13 +4,14 @@
   "private": true,
   "dependencies": {
     "browser-unhandled-rejection": "^1.0.2",
-    "echarts-jsx": "^1.1.1",
+    "echarts-jsx": "^1.2.0-rc.5",
     "idb-keyval": "^6.2.1",
     "koajax": "^1.0.0",
     "native-file-system-adapter": "^3.0.1",
     "primevue": "^3.52.0",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2",
+    "web-streams-polyfill": "^4.0.0",
     "web-utility": "^4.4.0"
   },
   "devDependencies": {
@@ -18,7 +19,7 @@
     "@parcel/packager-raw-url": "~2.12.0",
     "@parcel/transformer-vue": "~2.12.0",
     "@parcel/transformer-webmanifest": "~2.12.0",
-    "@types/node": "^18.19.32",
+    "@types/node": "^18.19.33",
     "@vue/tsconfig": "^0.5.1",
     "buffer": "^6.0.3",
     "husky": "^9.0.11",
@@ -27,7 +28,7 @@
     "parcel": "~2.12.0",
     "prettier": "^3.2.5",
     "typescript": "~5.4.5",
-    "vue-tsc": "^2.0.16",
+    "vue-tsc": "^2.0.19",
     "workbox-cli": "^7.1.0"
   },
   "prettier": {

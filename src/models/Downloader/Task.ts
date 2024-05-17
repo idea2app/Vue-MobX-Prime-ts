@@ -1,7 +1,8 @@
 import { del, get, set } from 'idb-keyval';
-import { type TransferProgress } from 'koajax';
+import type { DownloadOptions, TransferProgress } from 'koajax';
 import type { FileSystemHandle } from 'native-file-system-adapter';
-import { isReactive, reactive, toRaw } from 'vue';
+import { isReactive, toRaw, watch } from 'vue';
+import { ReadableStream } from 'web-streams-polyfill';
 import { ByteSize } from 'web-utility';
 
 export abstract class DownloadTask implements Partial<TransferProgress> {
@@ -11,26 +12,30 @@ export abstract class DownloadTask implements Partial<TransferProgress> {
   loaded = 0;
   percent = 0;
   executing = false;
-  pausing = Promise.withResolvers<void>();
+  options?: DownloadOptions;
+
+  stream?: ReadableStream<Partial<TransferProgress>>;
 
   get totalSize() {
     return new ByteSize(this.total);
   }
 
+  get loadedSize() {
+    return new ByteSize(this.loaded);
+  }
+
   constructor(
     public name: string,
     public path: string
-  ) {
-    this.pausing.resolve();
-
-    return reactive(this);
-  }
+  ) {}
 
   toJSON() {
-    const { id, name, path, fsHandle, total, loaded, percent, executing } =
-      this;
+    const { id, name, path, fsHandle, total, loaded, percent, options } = this;
 
-    return { id, name, path, fsHandle, total, loaded, percent, executing };
+    return {
+      ...{ id, name, path, fsHandle, options },
+      ...{ total, loaded, percent }
+    };
   }
 
   async saveMeta(data: Partial<TransferProgress> = {}) {
@@ -56,22 +61,39 @@ export abstract class DownloadTask implements Partial<TransferProgress> {
     return data;
   }
 
-  abstract start(...options: any[]): AsyncGenerator<Partial<TransferProgress>>;
+  abstract loadStream(
+    options?: DownloadOptions
+  ): AsyncGenerator<Partial<TransferProgress>>;
 
   async pause() {
     this.executing = false;
-    this.pausing = Promise.withResolvers();
   }
 
-  async resume() {
-    this.executing = true;
-    this.pausing.resolve();
+  async start(options = this.options) {
+    this.options = options;
+
+    const [innerStream, outerStream] = ReadableStream.from<
+      Partial<TransferProgress>
+    >(this.loadStream(options)).tee();
+
+    (async () => {
+      for await (const chunk of innerStream) console.table(chunk);
+    })();
+
+    return (this.stream = outerStream);
   }
 
   async destroy() {
     await this.pause();
 
     return del(this.id);
+  }
+
+  onFinished(callback: (task: DownloadTask) => any) {
+    return watch(
+      () => this.percent === 100,
+      () => callback(this)
+    );
   }
 
   static async create(name: string, path: string) {

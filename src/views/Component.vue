@@ -123,13 +123,7 @@ async function download() {
     'test',
     'https://ows.blob.core.chinacloudapi.cn/$web/file/001%E6%B1%9F%E6%B3%A2.png'
   );
-
-  try {
-    for await (const { percent } of task.start({ chunkSize: 1024 ** 2 / 2 }))
-      console.log(percent);
-  } catch {
-    downloader.destroyTask('test');
-  }
+  task.start({ chunkSize: 1024 ** 2 / 2 });
 }
 
 const openDialog = ref(false);

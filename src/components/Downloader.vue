@@ -1,13 +1,19 @@
 <template>
-  <ol class="list-none m-0 p-0">
+  <ol class="list-none m-0 p-0 flex flex-col gap-3">
     <li v-for="task in downloader.tasks" :key="task.id">
       <Card>
         <template #title>
-          <div class="flex justify-content-between align-items-center">
+          <div class="flex justify-between items-center">
             {{ task.name }}
             <div class="flex align-items-center">
               <small class="font-normal text-sm">
-                {{ task.totalSize.toShortString() }}
+                <span>
+                  {{ task.loadedSize.toShortString() }}
+                </span>
+                /
+                <span>
+                  {{ task.totalSize.toShortString() }}
+                </span>
               </small>
               <template v-if="task.percent < 100">
                 <IconButton
@@ -15,7 +21,7 @@
                   icon="pause"
                   @click="() => task.pause()"
                 />
-                <IconButton v-else icon="play" @click="() => task.resume()" />
+                <IconButton v-else icon="play" @click="() => task.start()" />
               </template>
               <IconButton
                 v-if="!task.executing"

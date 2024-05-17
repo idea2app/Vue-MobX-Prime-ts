@@ -3,6 +3,7 @@ import {
   FileSystemFileHandle,
   showSaveFilePicker
 } from 'native-file-system-adapter';
+import { reactive } from 'vue';
 
 import { DownloadTask } from './Task';
 
@@ -18,11 +19,16 @@ export class HTTPDownloadTask extends DownloadTask {
     super(name, path);
 
     this.id = `http-download-task-${name}`;
+
+    return reactive(this);
   }
 
-  async *start(options: DownloadOptions = {}) {
+  async *loadStream(options?: DownloadOptions) {
     const { path } = this;
-    const suggestedName = path.split('/').filter(Boolean).at(-1);
+    const suggestedName = new URL(path).pathname
+      .split('/')
+      .filter(Boolean)
+      .at(-1);
 
     try {
       this.fsHandle ||= await showSaveFilePicker({
@@ -40,21 +46,23 @@ export class HTTPDownloadTask extends DownloadTask {
       });
 
     try {
-      await this.saveMeta();
+      this.executing = true;
 
       for await (const chunk of stream) {
-        this.executing = true;
-
-        await writer.write(chunk.buffer);
+        await writer.write({
+          type: 'write',
+          position: this.loaded,
+          data: chunk.buffer
+        });
 
         yield this.saveMeta(chunk);
 
-        await this.pausing.promise;
+        if (!this.executing) break;
       }
     } finally {
       await writer.close();
+
       this.executing = false;
-      await this.saveMeta();
     }
   }
 }
