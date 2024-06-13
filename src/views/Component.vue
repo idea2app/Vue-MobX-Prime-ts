@@ -104,7 +104,7 @@ import Image from '../components/Image.vue';
 import ImageUploader from '../components/ImageUploader.vue';
 import Downloader from '../components/Downloader.vue';
 
-import downloader from '../models/Downloader';
+import { downloader } from '../models/service';
 
 const date = ref();
 
@@ -118,10 +118,10 @@ const tree = [
   }
 ];
 
-async function download() {
-  const task = await downloader.createTask(
-    'test',
-    'https://ows.blob.core.chinacloudapi.cn/$web/file/001%E6%B1%9F%E6%B3%A2.png'
+function download() {
+  const task = downloader.createTask(
+    'https://ows.blob.core.chinacloudapi.cn/$web/file/001%E6%B1%9F%E6%B3%A2.png',
+    'test'
   );
   task.start({ chunkSize: 1024 ** 2 / 2 });
 }
