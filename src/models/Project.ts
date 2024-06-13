@@ -1,4 +1,4 @@
-import { reactive } from 'vue';
+import { observable } from 'mobx';
 import type { components } from '@octokit/openapi-types';
 
 import { service } from './service';
@@ -8,11 +8,8 @@ export type Project = components['schemas']['minimal-repository'] & {
 };
 
 export class ProjectStore {
-  list: Project[] = [];
-
-  constructor() {
-    return reactive(this);
-  }
+  @observable
+  accessor list: Project[] = [];
 
   async getList(...names: string[]) {
     for (const name of names) {
