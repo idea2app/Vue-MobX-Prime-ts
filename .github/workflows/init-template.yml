@@ -1,0 +1,25 @@
+name: Template Repository initialization
+on:
+  push:
+    branches:
+      - master
+env:
+  TEMPLATE_OWNER: idea2app
+  TEMPLATE_NAME: Vue-MobX-Prime-ts
+
+jobs:
+  replace-repository-name:
+    runs-on: ubuntu-latest
+    if: github.repository != "${{github.env.TEMPLATE_OWNER}}/${{github.env.TEMPLATE_NAME}}"
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: |
+          sh .github/workflows/replace-repository-name.sh \
+            ${{ env.TEMPLATE_OWNER }} ${{ env.TEMPLATE_NAME }} \
+            ${{ github.repository_owner }} ${{ github.event.repository.name }}
+          rm -f .github/workflows/init-template.yml
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: '[fix] replace Repository Name'

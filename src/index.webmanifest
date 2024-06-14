@@ -2,7 +2,7 @@
   "name": "Vue scaffold",
   "short_name": "Vue Demo",
   "start_url": ".",
-  "description": "Vue 3 project scaffold based on TypeScript 5 & PrimeVue 3, which is inspired by WebCell scaffold.",
+  "description": "Vue 3 project scaffold based on TypeScript 5, MobX & PrimeVue 3, which is inspired by WebCell scaffold.",
   "scope": ".",
   "display": "standalone",
   "orientation": "any",
