@@ -2,7 +2,9 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
 
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript + PrimeVue App" />
+    <HelloWorld
+      msg="Welcome to Your Vue.js + MobX + TypeScript + PrimeVue App"
+    />
   </div>
 </template>
 

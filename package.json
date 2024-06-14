@@ -1,5 +1,5 @@
 {
-  "name": "vue-prime-ts",
+  "name": "vue-mobx-prime-ts",
   "version": "2.4.0",
   "private": true,
   "dependencies": {

@@ -47,6 +47,7 @@ import project from '../models/Project';
 onMounted(() =>
   project.getList(
     'vuejs/vue',
+    'mobxjs/mobx',
     'primefaces/primevue',
     'idea2app/ECharts-JSX',
     'EasyWebApp/KoAJAX',
