@@ -36,7 +36,7 @@
     <Tree class="text-start" :value="tree" />
 
     <h2 class="mt-4">Date Range</h2>
-    <Calendar selectionMode="range" v-model="date" />
+    <DataPicker selectionMode="range" v-model="date" />
 
     <h2 class="mt-4">Image</h2>
     <Image src="https://github.com/idea2app.png" />
@@ -90,9 +90,9 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Panel from 'primevue/panel';
 import Stepper from 'primevue/stepper';
-import StepperPanel from 'primevue/stepperpanel';
+import StepperPanel from 'primevue/steppanel';
 import Tree from 'primevue/tree';
-import Calendar from 'primevue/calendar';
+import DataPicker from 'primevue/datepicker';
 import FloatLabel from 'primevue/floatlabel';
 import InputText from 'primevue/inputtext';
 import Dialog from 'primevue/dialog';
@@ -110,10 +110,15 @@ const date = ref();
 
 const tree = [
   {
+    key: '0',
     label: 'node 0',
     children: [
-      { label: 'node 1.1' },
-      { label: 'node 1.2', children: [{ label: 'node 2.1' }] }
+      { key: '1.1', label: 'node 1.1' },
+      {
+        key: '1.2',
+        label: 'node 1.2',
+        children: [{ key: '2.1', label: 'node 2.1' }]
+      }
     ]
   }
 ];

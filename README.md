@@ -13,10 +13,10 @@ This template should help get you started developing with Vue 3 and Typescript i
 
 - Language: [TypeScript 5][2]
 - Component engine: [Vue 3][1]
-- Component suite: [PrimeVue 3][4]
+- Component suite: [PrimeVue 4][4]
 - Chart library: [ECharts-JSX 1][10]
-- State management: [MobX v6][3]
-- HTTP client: [KoAJAX 1][11]
+- State management: [MobX 6][3]
+- HTTP client: [KoAJAX 4][11]
 - Asset bundler: [Parcel 2][12]
 
 ## Extra components
