@@ -3,6 +3,7 @@ import { serviceWorkerUpdate } from 'web-utility';
 import { createApp } from 'vue';
 import { configure } from 'mobx';
 import PrimeVue from 'primevue/config';
+import Lara from '@primeuix/themes/lara';
 import ConfirmationService from 'primevue/confirmationservice';
 
 import App from './App.vue';
@@ -33,4 +34,8 @@ serviceWorker?.addEventListener('controllerchange', () =>
   window.location.reload()
 );
 
-createApp(App).use(router).use(PrimeVue).use(ConfirmationService).mount('#app');
+createApp(App)
+  .use(router)
+  .use(PrimeVue, { theme: { preset: Lara } })
+  .use(ConfirmationService)
+  .mount('#app');

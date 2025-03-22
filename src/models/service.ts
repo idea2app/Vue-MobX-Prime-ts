@@ -1,5 +1,5 @@
 import { HTTPClient } from 'koajax';
-import { Downloader } from 'mobx-restful';
+import { Downloader } from 'mobx-downloader';
 
 export const service = new HTTPClient({
   baseURI: 'https://api.github.com/',
