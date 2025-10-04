@@ -1,5 +1,5 @@
 import { Component, toNative, Vue } from 'vue-facing-decorator';
-import { observable } from 'mobx';
+import { makeObservable, observable } from 'mobx';
 import { Second } from 'web-utility';
 
 import { observer } from '../observer';
@@ -10,11 +10,20 @@ import { observer } from '../observer';
 @Component
 @observer
 class DecoratorHelloWorld extends Vue {
-  @observable
-  accessor count = 0;
+  // Using makeObservable with regular property instead of accessor
+  // because accessor creates private fields that don't work well with observer decorator
+  count = 0;
+
   time = new Date();
 
   private timer?: number;
+
+  constructor() {
+    super();
+    makeObservable(this, {
+      count: observable
+    });
+  }
 
   mounted() {
     this.timer = window.setInterval(() => (this.time = new Date()), Second);
