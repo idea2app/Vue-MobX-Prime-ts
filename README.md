@@ -58,7 +58,11 @@ export default toNative(MyMobX);
 import { observer } from './observer';
 import counterStore from './models/Counter';
 
-export const MyMobX = observer(() => <div>Count: {counterStore.count}</div>);
+export const MyMobX = observer(() => (
+  <button onClick={() => counterStore.increment()}>
+    Count: {counterStore.count}
+  </button>
+));
 ```
 
 ### Examples

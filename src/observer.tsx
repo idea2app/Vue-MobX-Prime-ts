@@ -1,5 +1,5 @@
 import { Component, toNative, Vue } from 'vue-facing-decorator';
-import { h } from 'vue';
+import { defineComponent, h } from 'vue';
 import { Observer } from 'mobx-vue-lite';
 import type { FunctionalComponent } from 'vue';
 
@@ -27,9 +27,13 @@ function classObserver<T extends Constructor<VueInstance>>(
  * @example
  * ```tsx
  * import { observer } from './observer';
- * import store from './store';
+ * import counterStore from './models/Counter';
  *
- * export const MyMobX = observer(() => <div>{store.count}</div>);
+ * export const MyMobX = observer(() => (
+ *   <button onClick={() => counterStore.increment()}>
+ *     Count: {counterStore.count}
+ *   </button>
+ * ));
  * ```
  *
  * For class components:
@@ -56,10 +60,10 @@ export function observer<T extends Constructor<VueInstance>>(
 ): T;
 export function observer<P = {}>(
   functionComponent: FunctionalComponent<P>
-): ReturnType<typeof toNative>;
+): ReturnType<typeof defineComponent>;
 export function observer<T extends Constructor<VueInstance>, P extends {} = {}>(
   component: T | FunctionalComponent<P>
-): T | ReturnType<typeof toNative> {
+): T | ReturnType<typeof defineComponent> {
   if (
     typeof component === 'function' &&
     (component.prototype instanceof Vue ||
@@ -70,12 +74,9 @@ export function observer<T extends Constructor<VueInstance>, P extends {} = {}>(
 
   const functionComponent = component as FunctionalComponent<P>;
 
-  @Component
-  class FunctionComponent extends Vue {
-    render() {
-      return h(Observer, null, { default: functionComponent });
+  return defineComponent({
+    setup() {
+      return () => h(Observer, null, { default: functionComponent });
     }
-  }
-
-  return toNative(FunctionComponent);
+  });
 }
