@@ -1,5 +1,8 @@
 <template>
-  <ec-svg-renderer :style="{ height: '80vh' }" @click="console.log">
+  <ec-svg-renderer
+    :style="{ width: '100%', height: '80vh' }"
+    @click="console.log"
+  >
     <ec-title text="ECharts example" />
     <ec-legend :data="['sales']" />
     <ec-tooltip />

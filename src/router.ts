@@ -11,6 +11,10 @@ export default createRouter({
       component: Home
     },
     {
+      path: '/decorator',
+      component: () => import('./views/Decorator.tsx')
+    },
+    {
       path: '/component',
       component: () => import('./views/Component.vue')
     },

@@ -1,6 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
+    <router-link to="/decorator">Decorator</router-link> |
     <router-link to="/component">Component</router-link> |
     <router-link to="/chart">Chart</router-link> |
     <router-link to="/about">About</router-link>
@@ -13,7 +14,9 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #2c3e50;
 }
 

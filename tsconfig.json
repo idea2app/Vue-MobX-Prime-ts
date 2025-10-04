@@ -5,7 +5,9 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "lib": ["ESNext", "DOM"],
-    "types": ["node"]
+    "types": ["node"],
+    "jsx": "preserve",
+    "jsxImportSource": "vue"
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
