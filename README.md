@@ -27,6 +27,41 @@ This template should help get you started developing with Vue 3 and Typescript i
 4. [`<ImageUploader />`](src/components/ImageUploader.vue)
 5. [`<Downloader />`](src/components/Downloader.vue)
 
+## MobX Observer Decorator
+
+This scaffold provides an `@observer` decorator that makes Vue components reactive to MobX observable state changes, similar to `mobx-react`. It supports both class components and function components.
+
+### Usage with Class Components
+
+```tsx
+import { Vue, Component, toNative } from 'vue-facing-decorator';
+import { observable } from 'mobx';
+import { observer } from './observer';
+
+@Component
+@observer
+class MyMobX extends Vue {
+  @observable
+  accessor count = 0;
+
+  render() {
+    return <button onClick={() => this.count++}>Count: {this.count}</button>;
+  }
+}
+export default toNative(MyMobX);
+```
+
+### Usage with Function Components
+
+```tsx
+import { observer } from './observer';
+import store from './store';
+
+export const MyMobX = observer(() => <div>Count: {store.count}</div>);
+```
+
+See [`src/observer.tsx`](src/observer.tsx) for the implementation and [`src/views/Decorator.tsx`](src/views/Decorator.tsx) and [`src/views/FunctionExample.tsx`](src/views/FunctionExample.tsx) for examples.
+
 ## Best practice
 
 1.  Install GitHub apps in your organization or account:
