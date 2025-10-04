@@ -1,11 +1,17 @@
 import { Component, toNative, Vue } from 'vue-facing-decorator';
+import { observable } from 'mobx';
 import { Second } from 'web-utility';
+
+import { observer } from '../observer';
 
 /**
  * Forked from Hello World example of WebCell v3: {@link https://github.com/EasyWebApp/WebCell-scaffold/blob/b0709951eba0550e38e803b4d93e968c9f7215b6/src/page/Clock.tsx}
  */
 @Component
+@observer
 class DecoratorHelloWorld extends Vue {
+  @observable
+  accessor count = 0;
   time = new Date();
 
   private timer?: number;
@@ -22,6 +28,12 @@ class DecoratorHelloWorld extends Vue {
     return (
       <>
         <h1>Hello World from Decorator Component!</h1>
+
+        <h2>MobX Observer example</h2>
+        <div>
+          <p>Count: {this.count}</p>
+          <button onClick={() => this.count++}>Increment</button>
+        </div>
 
         <h2>Timer example</h2>
         <time datetime={this.time.toJSON()}>{this.time.toLocaleString()}</time>

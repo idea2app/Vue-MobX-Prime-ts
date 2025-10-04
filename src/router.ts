@@ -15,6 +15,10 @@ export default createRouter({
       component: () => import('./views/Decorator.tsx')
     },
     {
+      path: '/function-example',
+      component: () => import('./views/FunctionExample.tsx')
+    },
+    {
       path: '/component',
       component: () => import('./views/Component.vue')
     },
