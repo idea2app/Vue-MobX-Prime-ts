@@ -33,27 +33,20 @@ This scaffold provides an `@observer` decorator that makes Vue components reacti
 
 ### Usage with Class Components
 
-**Important:** For class components, use `makeObservable()` in the constructor with regular properties, not `@observable accessor`. The accessor syntax creates private fields that don't work with the observer pattern.
-
 ```tsx
 import { Vue, Component, toNative } from 'vue-facing-decorator';
-import { makeObservable, observable } from 'mobx';
 import { observer } from './observer';
+import counterStore from './models/Counter';
 
 @Component
 @observer
 class MyMobX extends Vue {
-  count = 0;
-
-  constructor() {
-    super();
-    makeObservable(this, {
-      count: observable
-    });
-  }
-
   render() {
-    return <button onClick={() => this.count++}>Count: {this.count}</button>;
+    return (
+      <button onClick={() => counterStore.increment()}>
+        Count: {counterStore.count}
+      </button>
+    );
   }
 }
 export default toNative(MyMobX);
@@ -63,15 +56,16 @@ export default toNative(MyMobX);
 
 ```tsx
 import { observer } from './observer';
-import store from './store';
+import counterStore from './models/Counter';
 
-export const MyMobX = observer(() => <div>Count: {store.count}</div>);
+export const MyMobX = observer(() => <div>Count: {counterStore.count}</div>);
 ```
 
 ### Examples
 
-- Class component with observer: [`src/views/Decorator.tsx`](src/views/Decorator.tsx)
-- Function component with observer: [`src/views/FunctionExample.tsx`](src/views/FunctionExample.tsx)
+- Class component with observer: [`src/views/ClassDecorator.tsx`](src/views/ClassDecorator.tsx)
+- Function component with observer: [`src/views/FunctionDecorator.tsx`](src/views/FunctionDecorator.tsx)
+- Counter store with `@observable accessor`: [`src/models/Counter.ts`](src/models/Counter.ts)
 - Implementation: [`src/observer.tsx`](src/observer.tsx)
 
 ![Decorator Component Example](https://github.com/user-attachments/assets/41d51578-2301-492a-bb82-4a3a5d8759a8)

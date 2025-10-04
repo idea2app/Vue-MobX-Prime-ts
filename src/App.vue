@@ -1,8 +1,8 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/decorator">Decorator</router-link> |
-    <router-link to="/function-example">Function Example</router-link> |
+    <router-link to="/decorator/class">Decorator (class)</router-link> |
+    <router-link to="/decorator/function">Decorator (function)</router-link> |
     <router-link to="/component">Component</router-link> |
     <router-link to="/chart">Chart</router-link> |
     <router-link to="/about">About</router-link>

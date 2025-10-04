@@ -11,12 +11,12 @@ export default createRouter({
       component: Home
     },
     {
-      path: '/decorator',
-      component: () => import('./views/Decorator.tsx')
+      path: '/decorator/class',
+      component: () => import('./views/ClassDecorator.tsx')
     },
     {
-      path: '/function-example',
-      component: () => import('./views/FunctionExample.tsx')
+      path: '/decorator/function',
+      component: () => import('./views/FunctionDecorator.tsx')
     },
     {
       path: '/component',

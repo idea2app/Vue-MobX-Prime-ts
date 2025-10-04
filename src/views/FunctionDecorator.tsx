@@ -1,5 +1,5 @@
 import { observer } from '../observer';
-import project from '../models/Project';
+import counterStore from '../models/Counter';
 
 /**
  * Example of a function component using the observer wrapper
@@ -8,11 +8,10 @@ import project from '../models/Project';
 export default observer(() => (
   <div>
     <h1>Function Component with MobX Observer</h1>
-    <p>Project count: {project.list.length}</p>
-    <ul>
-      {project.list.map(item => (
-        <li key={item.id}>{item.name}</li>
-      ))}
-    </ul>
+    <div>
+      <p>Count: {counterStore.count}</p>
+      <button onClick={() => counterStore.increment()}>Increment</button>
+      <button onClick={() => counterStore.decrement()}>Decrement</button>
+    </div>
   </div>
 ));

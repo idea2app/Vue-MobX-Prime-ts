@@ -1,29 +1,18 @@
 import { Component, toNative, Vue } from 'vue-facing-decorator';
-import { makeObservable, observable } from 'mobx';
 import { Second } from 'web-utility';
 
 import { observer } from '../observer';
+import counterStore from '../models/Counter';
 
 /**
  * Forked from Hello World example of WebCell v3: {@link https://github.com/EasyWebApp/WebCell-scaffold/blob/b0709951eba0550e38e803b4d93e968c9f7215b6/src/page/Clock.tsx}
  */
 @Component
 @observer
-class DecoratorHelloWorld extends Vue {
-  // Using makeObservable with regular property instead of accessor
-  // because accessor creates private fields that don't work well with observer decorator
-  count = 0;
-
+class ClassDecoratorExample extends Vue {
   time = new Date();
 
   private timer?: number;
-
-  constructor() {
-    super();
-    makeObservable(this, {
-      count: observable
-    });
-  }
 
   mounted() {
     this.timer = window.setInterval(() => (this.time = new Date()), Second);
@@ -38,10 +27,12 @@ class DecoratorHelloWorld extends Vue {
       <>
         <h1>Hello World from Decorator Component!</h1>
 
-        <h2>MobX Observer example</h2>
+        <h2>
+          MobX <code>@observer</code> example
+        </h2>
         <div>
-          <p>Count: {this.count}</p>
-          <button onClick={() => this.count++}>Increment</button>
+          <p>Count: {counterStore.count}</p>
+          <button onClick={() => counterStore.increment()}>Increment</button>
         </div>
 
         <h2>Timer example</h2>
@@ -70,4 +61,4 @@ class DecoratorHelloWorld extends Vue {
     );
   }
 }
-export default toNative(DecoratorHelloWorld);
+export default toNative(ClassDecoratorExample);
