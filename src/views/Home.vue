@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home text-center">
     <img alt="Vue logo" :src="VueLogo" />
 
     <HelloWorld

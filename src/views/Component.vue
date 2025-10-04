@@ -36,7 +36,7 @@
     <Tree class="text-start" :value="tree" />
 
     <h2 class="mt-4">Date Range</h2>
-    <DataPicker selectionMode="range" v-model="date" />
+    <DatePicker selectionMode="range" updateModelType="date" v-model="date" />
 
     <h2 class="mt-4">Image</h2>
     <Image src="https://github.com/idea2app.png" />
@@ -92,7 +92,7 @@ import Panel from 'primevue/panel';
 import Stepper from 'primevue/stepper';
 import StepperPanel from 'primevue/steppanel';
 import Tree from 'primevue/tree';
-import DataPicker from 'primevue/datepicker';
+import DatePicker from 'primevue/datepicker';
 import FloatLabel from 'primevue/floatlabel';
 import InputText from 'primevue/inputtext';
 import Dialog from 'primevue/dialog';

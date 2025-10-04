@@ -11,13 +11,13 @@ This template should help get you started developing with Vue 3 and Typescript i
 
 ## Knowledge
 
-- Language: [TypeScript 5][2]
+- Language: [TypeScript 5][2] + [ES Decorator][10] (stage-3)
 - Component engine: [Vue 3][1]
 - Component suite: [PrimeVue 4][4]
-- Chart library: [ECharts-JSX 1][10]
+- Chart library: [ECharts-JSX 1][11]
 - State management: [MobX 6][3]
-- HTTP client: [KoAJAX 4][11]
-- Asset bundler: [Parcel 2][12]
+- HTTP client: [KoAJAX 3][12]
+- Asset bundler: [Parcel 2][13]
 
 ## Extra components
 
@@ -29,22 +29,21 @@ This template should help get you started developing with Vue 3 and Typescript i
 
 ## Best practice
 
-1. Install GitHub apps in your organization or account:
+1.  Install GitHub apps in your organization or account:
+    1.  [Probot settings][14]: set up Issue labels & Pull Request rules
+    2.  [PR badge][15]: set up Online [VS Code][16] editor entries in Pull Request description
 
-   1. [Probot settings][13]: set up Issue labels & Pull Request rules
-   2. [PR badge][14]: set up Online [VS Code][15] editor entries in Pull Request description
+2.  Click the **[Use this template][17] button** on the top of this GitHub repository's home page, then create your own repository in the app-installed namespace above
 
-2. Click the **[Use this template][16] button** on the top of this GitHub repository's home page, then create your own repository in the app-installed namespace above
+3.  Click the **[Open in GitHub codespaces][7] button** on the top of ReadMe file, then an **online VS Code development environment** will be started immediately
 
-3. Click the **[Open in GitHub codespaces][7] button** on the top of ReadMe file, then an **online VS Code development environment** will be started immediately
+4.  Set [Vercel variables][18] as [Repository secrets][19], then every commit will get an independent **Preview URL**
 
-4. Set [Vercel variables][17] as [Repository secrets][18], then every commit will get an independent **Preview URL**
+5.  Recommend to add a [Notification step in GitHub actions][20] for your Team IM app
 
-5. Recommend to add a [Notification step in GitHub actions][19] for your Team IM app
+6.  Remind the PMs & users of your product to submit **Feature/Enhancement** requests or **Bug** reports with [Issue forms][21] instead of IM messages or Mobile Phone calls
 
-6. Remind the PMs & users of your product to submit **Feature/Enhancement** requests or **Bug** reports with [Issue forms][20] instead of IM messages or Mobile Phone calls
-
-7. Collect all these issues into [Project kanbans][21], then create **Pull requests** & add `closes #issue_number` into its description for automation
+7.  Collect all these issues into [Project kanbans][22], then create **Pull requests** & add `closes #issue_number` into its description for automation
 
 ## Usage
 
@@ -75,7 +74,7 @@ npm test
 
 ## Recommended IDE Setup
 
-- [VSCode][15] + [Volar][22]
+- [VSCode][16] + [Volar][23]
 
 ### Type Support For `.vue` Imports in TS
 
@@ -90,16 +89,17 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 [7]: https://codespaces.new/idea2app/Vue-MobX-Prime-ts
 [8]: https://gitpod.io/?autostart=true#https://github.com/idea2app/Vue-MobX-Prime-ts
 [9]: https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-[10]: https://github.com/idea2app/ECharts-JSX
-[11]: https://github.com/EasyWebApp/KoAJAX
-[12]: https://parceljs.org/
-[13]: https://probot.github.io/apps/settings/
-[14]: https://pullrequestbadge.com/
-[15]: https://code.visualstudio.com/
-[16]: https://github.com/new?template_name=Vue-MobX-Prime-ts&template_owner=idea2app
-[17]: https://github.com/idea2app/Next-Bootstrap-ts/blob/80967ed49045af9dbcf4d3695a2c39d53a6f71f1/.github/workflows/pull-request.yml#L9-L11
-[18]: https://github.com/idea2app/Vue-MobX-Prime-ts/settings/secrets/actions
-[19]: https://github.com/kaiyuanshe/kaiyuanshe.github.io/blob/bb4675a56bf1d6b207231313da5ed0af7cf0ebd6/.github/workflows/pull-request.yml#L32-L56
-[20]: https://github.com/idea2app/Vue-MobX-Prime-ts/issues/new/choose
-[21]: https://github.com/idea2app/Vue-MobX-Prime-ts/projects
-[22]: https://marketplace.visualstudio.com/items?itemName=vue.volar
+[10]: https://github.com/tc39/proposal-decorators
+[11]: https://github.com/idea2app/ECharts-JSX
+[12]: https://github.com/EasyWebApp/KoAJAX
+[13]: https://parceljs.org/
+[14]: https://probot.github.io/apps/settings/
+[15]: https://pullrequestbadge.com/
+[16]: https://code.visualstudio.com/
+[17]: https://github.com/new?template_name=Vue-MobX-Prime-ts&template_owner=idea2app
+[18]: https://github.com/idea2app/Next-Bootstrap-ts/blob/80967ed49045af9dbcf4d3695a2c39d53a6f71f1/.github/workflows/pull-request.yml#L9-L11
+[19]: https://github.com/idea2app/Vue-MobX-Prime-ts/settings/secrets/actions
+[20]: https://github.com/kaiyuanshe/kaiyuanshe.github.io/blob/bb4675a56bf1d6b207231313da5ed0af7cf0ebd6/.github/workflows/pull-request.yml#L32-L56
+[21]: https://github.com/idea2app/Vue-MobX-Prime-ts/issues/new/choose
+[22]: https://github.com/idea2app/Vue-MobX-Prime-ts/projects
+[23]: https://marketplace.visualstudio.com/items?itemName=vue.volar
