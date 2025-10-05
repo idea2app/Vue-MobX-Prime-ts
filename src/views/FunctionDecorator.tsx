@@ -7,12 +7,12 @@ import counterStore from '../models/Counter';
  * This component will automatically react to changes in the MobX store
  */
 export default observer(() => (
-  <div>
+  <main class="text-center">
     <h1>Function Component with MobX Observer</h1>
     <div>
       <p>Count: {counterStore.count}</p>
       <button onClick={() => counterStore.increment()}>Increment</button>
       <button onClick={() => counterStore.decrement()}>Decrement</button>
     </div>
-  </div>
+  </main>
 ));
