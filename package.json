@@ -1,6 +1,6 @@
 {
   "name": "vue-mobx-prime-ts",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "private": true,
   "dependencies": {
     "@primeuix/themes": "^1.2.5",
@@ -11,6 +11,7 @@
     "mobx": "^6.15.0",
     "mobx-downloader": "^0.3.1",
     "mobx-restful": "^2.1.3",
+    "mobx-vue-helper": "^0.1.0",
     "mobx-vue-lite": "^0.4.3",
     "primevue": "^4.4.0",
     "vue": "^3.5.22",
