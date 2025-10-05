@@ -1,23 +1,9 @@
-import { Component, toNative, Vue } from 'vue-facing-decorator';
-import { defineComponent, h } from 'vue';
+import { FunctionalComponent, defineComponent, SetupContext } from 'vue';
+import { Vue } from 'vue-facing-decorator';
 import { Observer } from 'mobx-vue-lite';
-import type { FunctionalComponent } from 'vue';
+import { Constructor } from 'web-utility';
 
-type Constructor<T = {}> = new (...args: any[]) => T;
 type VueInstance = InstanceType<typeof Vue>;
-
-function classObserver<T extends Constructor<VueInstance>>(
-  ClassComponent: T
-): T {
-  const { render } = ClassComponent.prototype;
-
-  if (render)
-    ClassComponent.prototype.render = function (this: VueInstance) {
-      return <Observer>{() => render.call(this)}</Observer>;
-    };
-
-  return ClassComponent;
-}
 
 /**
  * Observer decorator/wrapper for both class and function components.
@@ -56,27 +42,38 @@ function classObserver<T extends Constructor<VueInstance>>(
  * ```
  */
 export function observer<T extends Constructor<VueInstance>>(
-  ClassComponent: T
-): T;
-export function observer<P = {}>(
+  ClassComponent: T,
+  {}: ClassDecoratorContext<T>
+): void | T;
+export function observer<P extends Record<string, unknown> = {}>(
   functionComponent: FunctionalComponent<P>
-): ReturnType<typeof defineComponent>;
-export function observer<T extends Constructor<VueInstance>, P extends {} = {}>(
-  component: T | FunctionalComponent<P>
-): T | ReturnType<typeof defineComponent> {
-  if (
-    typeof component === 'function' &&
-    (component.prototype instanceof Vue ||
-      typeof component.prototype?.render === 'function')
-  ) {
-    return classObserver(component as T);
-  }
+): FunctionalComponent<P>;
+export function observer(component: unknown): unknown {
+  if (typeof component === 'function') {
+    const { prototype } = component as { prototype?: Record<string, unknown> };
 
-  const functionComponent = component as FunctionalComponent<P>;
+    if (prototype instanceof Vue || typeof prototype?.render === 'function') {
+      const render = prototype?.render as
+        | ((this: VueInstance) => unknown)
+        | undefined;
 
-  return defineComponent({
-    setup() {
-      return () => h(Observer, null, { default: functionComponent });
+      if (typeof render === 'function')
+        Object.defineProperty(prototype, 'render', {
+          writable: true,
+          configurable: true,
+          value: function (this: VueInstance) {
+            return <Observer>{() => render.call(this)}</Observer>;
+          }
+        });
+      return component;
     }
+  }
+  const FunctionComponent = component as FunctionalComponent<
+    Record<string, unknown>
+  >;
+  return defineComponent({
+    setup: (props: Record<string, unknown>, context: SetupContext) => () => (
+      <Observer>{() => FunctionComponent(props, context)}</Observer>
+    )
   });
 }

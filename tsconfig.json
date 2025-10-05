@@ -2,6 +2,7 @@
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
     "useDefineForClassFields": true,
+    "verbatimModuleSyntax": false,
     "skipLibCheck": true,
     "sourceMap": true,
     "lib": ["ESNext", "DOM"],
