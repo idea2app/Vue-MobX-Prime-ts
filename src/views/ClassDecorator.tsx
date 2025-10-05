@@ -1,7 +1,7 @@
 import { Component, toNative, Vue } from 'vue-facing-decorator';
 import { Second } from 'web-utility';
+import { observer } from 'mobx-vue-helper';
 
-import { observer } from '../observer';
 import counterStore from '../models/Counter';
 
 /**

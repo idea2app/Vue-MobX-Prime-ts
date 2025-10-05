@@ -29,13 +29,13 @@ This template should help get you started developing with Vue 3 and Typescript i
 
 ## MobX Observer Decorator
 
-This scaffold provides an `@observer` decorator that makes Vue components reactive to MobX observable state changes, similar to `mobx-react`. It supports both class components and function components.
+This scaffold uses the [`mobx-vue-helper`](https://github.com/idea2app/MobX-Vue-helper) package, which provides an `@observer` decorator that makes Vue components reactive to MobX observable state changes, similar to `mobx-react`. It supports both class components and function components.
 
 ### Usage with Class Components
 
 ```tsx
 import { Vue, Component, toNative } from 'vue-facing-decorator';
-import { observer } from './observer';
+import { observer } from 'mobx-vue-helper';
 import counterStore from './models/Counter';
 
 @Component
@@ -55,7 +55,7 @@ export default toNative(MyMobX);
 ### Usage with Function Components
 
 ```tsx
-import { observer } from './observer';
+import { observer } from 'mobx-vue-helper';
 import counterStore from './models/Counter';
 
 export const MyMobX = observer(() => (
@@ -70,7 +70,7 @@ export const MyMobX = observer(() => (
 - Class component with observer: [`src/views/ClassDecorator.tsx`](src/views/ClassDecorator.tsx)
 - Function component with observer: [`src/views/FunctionDecorator.tsx`](src/views/FunctionDecorator.tsx)
 - Counter store with `@observable accessor`: [`src/models/Counter.ts`](src/models/Counter.ts)
-- Implementation: [`src/observer.tsx`](src/observer.tsx)
+- Observer decorator package: [`mobx-vue-helper`](https://github.com/idea2app/MobX-Vue-helper)
 
 ![Decorator Component Example](https://github.com/user-attachments/assets/41d51578-2301-492a-bb82-4a3a5d8759a8)
 

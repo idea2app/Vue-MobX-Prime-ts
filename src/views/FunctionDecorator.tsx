@@ -1,4 +1,5 @@
-import { observer } from '../observer';
+import { observer } from 'mobx-vue-helper';
+
 import counterStore from '../models/Counter';
 
 /**
