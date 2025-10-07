@@ -1,11 +1,10 @@
 import { observer } from 'mobx-vue-helper';
-import { Observer } from 'mobx-vue-lite';
+import { DownloadTask } from 'mobx-downloader';
 import ProgressBar from 'primevue/progressbar';
 import Card from 'primevue/card';
 
 import { IconButton } from './IconButton';
 import { downloader } from '../models/service';
-import { DownloadTask } from 'mobx-downloader';
 
 const DownloadTaskCard = observer(({ task }: { task: DownloadTask }) => (
   <Card>

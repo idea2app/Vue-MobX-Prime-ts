@@ -1,6 +1,6 @@
 import { Component, toNative, Vue } from 'vue-facing-decorator';
 import { Second } from 'web-utility';
-import { observer } from 'mobx-vue-helper';
+import { observer, reaction } from 'mobx-vue-helper';
 
 import counterStore from '../models/Counter';
 
@@ -20,6 +20,11 @@ class ClassDecoratorExample extends Vue {
 
   unmounted() {
     if (this.timer) clearInterval(this.timer);
+  }
+
+  @reaction(() => counterStore.count)
+  handleCountChange(newValue: number, oldValue: number) {
+    console.log(`Count changed from ${oldValue} to ${newValue}`);
   }
 
   render() {

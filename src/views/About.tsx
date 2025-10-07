@@ -3,7 +3,7 @@ import { observer } from 'mobx-vue-helper';
 import Button from 'primevue/button';
 import Card from 'primevue/card';
 
-import project from '../models/Project';
+import project, { Project } from '../models/Project';
 
 @Component
 @observer
@@ -20,25 +20,21 @@ class About extends Vue {
     );
   }
 
-  renderProjectCard = (item: (typeof project.list)[0]) => (
-    <div class="col-12 sm:col-6 lg:col-3" key={item.id}>
+  renderProjectCard = ({ id, logo, name, description, homepage, html_url }: Project) => (
+    <div class="col-12 sm:col-6 lg:col-3" key={id}>
       <Card>
         {{
-          header: () => <img class="w-full" src={item.logo} />,
-          title: () => item.name,
-          content: () => <p class="m-0">{item.description}</p>,
+          header: () => <img class="w-full" src={logo} />,
+          title: () => name,
+          content: () => <p class="m-0">{description}</p>,
           footer: () => (
             <div class="flex gap-3 mt-1">
-              <a
-                class="block w-full"
-                target="_blank"
-                href={item.homepage || ''}
-              >
+              <a class="block w-full" target="_blank" href={homepage || ''}>
                 <Button severity="primary" outlined>
                   Home page
                 </Button>
               </a>
-              <a class="block w-full" target="_blank" href={item.html_url}>
+              <a class="block w-full" target="_blank" href={html_url}>
                 <Button severity="success">Source code</Button>
               </a>
             </div>
@@ -58,5 +54,4 @@ class About extends Vue {
     );
   }
 }
-
 export default toNative(About);

@@ -1,4 +1,4 @@
-import { Component, toNative, Vue, Prop } from 'vue-facing-decorator';
+import { Component, toNative, Vue, Prop, TSX } from 'vue-facing-decorator';
 import { observer } from 'mobx-vue-helper';
 import Button from 'primevue/button';
 
@@ -6,8 +6,9 @@ import * as styles from './HelloWorld.module.less';
 
 @Component
 @observer
-class HelloWorld extends Vue {
-  @Prop({ type: String, required: true }) readonly msg!: string;
+class HelloWorld extends TSX<{ msg: string }>()(Vue) {
+  @Prop({ type: String, required: true })
+  readonly msg!: string;
 
   count = 0;
 
@@ -17,36 +18,20 @@ class HelloWorld extends Vue {
         <h1>{this.msg}</h1>
 
         <p>
-          Recommended IDE setup:
-          <a href="https://code.visualstudio.com/" target="_blank">
-            VSCode
-          </a>
-          {' + '}
-          <a href="https://github.com/johnsoncodehk/volar" target="_blank">
-            {' '}
-            Volar{' '}
-          </a>
-        </p>
-
-        <p>
           See <code>README.md</code> for more information.
         </p>
 
         <p>
-          <a href="https://vitejs.dev/guide/features.html" target="_blank">
-            Vite Docs
+          <a href="https://parceljs.org/languages/vue/" target="_blank">
+            Parcel docs
           </a>
           {' | '}
           <a href="https://v3.vuejs.org/" target="_blank">
-            Vue 3 Docs
+            Vue 3 docs
           </a>
         </p>
 
-        <Button
-          type="button"
-          severity="primary"
-          onClick={() => this.count++}
-        >
+        <Button type="button" severity="primary" onClick={() => this.count++}>
           count is: {this.count}
         </Button>
         <p>
@@ -57,5 +42,4 @@ class HelloWorld extends Vue {
     );
   }
 }
-
 export default toNative(HelloWorld);

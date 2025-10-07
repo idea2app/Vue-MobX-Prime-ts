@@ -1,4 +1,4 @@
-import { Component, toNative, Vue, Watch, Prop } from 'vue-facing-decorator';
+import { Component, toNative, Vue, Watch, Prop, TSX } from 'vue-facing-decorator';
 import { observer } from 'mobx-vue-helper';
 
 import Overlay from './Overlay';
@@ -6,7 +6,7 @@ import * as styles from './ImageUploader.module.less';
 
 @Component
 @observer
-class ImageUploader extends Vue {
+class ImageUploader extends TSX<{ class?: string }>()(Vue) {
   @Prop({ type: String })
   readonly name?: string;
 
@@ -68,18 +68,13 @@ class ImageUploader extends Vue {
         )}
         <input
           type="file"
-          name={name}
-          required={required}
-          disabled={disabled}
+          {...{ name, required, disabled }}
           accept={accept || 'image/*'}
           onChange={this.preview}
         />
-        {URI && (
-          <i class={['pi pi-refresh', styles.rotate]} onClick={this.rotate} />
-        )}
+        {URI && <i class={['pi pi-refresh', styles.rotate]} onClick={this.rotate} />}
       </Overlay>
     );
   }
 }
-
 export default toNative(ImageUploader);

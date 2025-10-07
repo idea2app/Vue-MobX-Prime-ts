@@ -8,7 +8,6 @@ export default observer(() => (
   <div class="home text-center">
     <img alt="Vue logo" src={VueLogo} />
 
-    {/* @ts-expect-error - Component props typing */}
     <HelloWorld msg="Welcome to Your Vue.js + MobX + TypeScript + PrimeVue App" />
   </div>
 ));

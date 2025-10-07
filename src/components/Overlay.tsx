@@ -8,16 +8,11 @@ interface OverlayProps extends Record<string, unknown> {
   show?: boolean;
 }
 
-const Overlay: FunctionalComponent<OverlayProps> = (props, { slots }) => (
-  <div
-    class={[
-      styles.box,
-      { 'bg-light rounded-sm': props.show, show: props.show }
-    ]}
-  >
+const Overlay: FunctionalComponent<OverlayProps> = ({ show }, { slots }) => (
+  <div class={[styles.box, { 'bg-light rounded-sm': show, show }]}>
     {slots.default?.()}
 
-    {props.show && (
+    {show && (
       <div class={styles.spinner}>
         <ProgressSpinner />
       </div>

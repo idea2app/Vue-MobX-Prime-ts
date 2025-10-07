@@ -3,7 +3,7 @@ import { observer } from 'mobx-vue-helper';
 
 export interface IconButtonProps extends Record<string, unknown> {
   icon: string;
-  onClick?: () => void;
+  onClick?: () => any;
 }
 
 export const IconButton: FunctionalComponent<IconButtonProps> = observer(

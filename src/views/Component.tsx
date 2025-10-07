@@ -55,9 +55,10 @@ class ComponentPage extends Vue {
     task.start({ chunkSize: 1024 ** 2 / 2 });
   };
 
-  closeDialog = (data: any) => {
+  closeDialog = (event: Event) => {
+    event.preventDefault();
+
     this.openDialog = false;
-    console.log(data);
   };
 
   openConfirm = () =>
@@ -73,14 +74,10 @@ class ComponentPage extends Vue {
       <div class="text-left">
         <h2>Stock Number</h2>
         <StockNumber extent={0.3} value={0.3}>
-          {{
-            after: () => <span>%</span>
-          }}
+          {{ after: () => <span>%</span> }}
         </StockNumber>
         <StockNumber extent={-0.5} value={0.5}>
-          {{
-            after: () => <span>%</span>
-          }}
+          {{ after: () => <span>%</span> }}
         </StockNumber>
 
         <h2 class="mt-4">Panel</h2>
@@ -90,12 +87,9 @@ class ComponentPage extends Vue {
 
         <h2 class="mt-4">Stepper</h2>
 
-        {/* @ts-expect-error - PrimeVue types issue */}
-        <Stepper orientation="vertical">
-          {/* @ts-expect-error - PrimeVue types issue */}
-          <StepperPanel header="first"></StepperPanel>
-          {/* @ts-expect-error - PrimeVue types issue */}
-          <StepperPanel header="second"></StepperPanel>
+        <Stepper>
+          <StepperPanel></StepperPanel>
+          <StepperPanel></StepperPanel>
         </Stepper>
 
         <h2 class="mt-4">Table</h2>
@@ -123,17 +117,16 @@ class ComponentPage extends Vue {
         />
 
         <h2 class="mt-4">Image</h2>
-        {/* @ts-expect-error - Component props typing */}
         <Image src="https://github.com/idea2app.png" />
 
         <h2 class="mt-4">Image Uploader</h2>
-        {/* @ts-expect-error - Component props typing */}
         <ImageUploader class="mb-4" />
 
         <h2 class="mt-4">Downloader</h2>
-        <Button onClick={this.download}>download</Button>
-        {/* @ts-expect-error - Component props typing */}
-        <Downloader class="mt-4" />
+        <div class="d-flex flex-col gap-4">
+          <Button onClick={this.download}>download</Button>
+          <Downloader />
+        </div>
 
         <h2 class="mt-4">Dialog</h2>
         <Button severity="primary" onClick={() => (this.openDialog = true)}>
@@ -141,13 +134,7 @@ class ComponentPage extends Vue {
         </Button>
 
         <Dialog modal header="form" visible={this.openDialog}>
-          <form
-            onSubmit={(e: Event) => {
-              e.preventDefault();
-              this.closeDialog(e);
-            }}
-            onReset={this.closeDialog}
-          >
+          <form onSubmit={this.closeDialog} onReset={this.closeDialog}>
             <FloatLabel class="my-3">
               <InputText id="example-input" name="test" required />
               <label for="example-input">input</label>
@@ -170,5 +157,4 @@ class ComponentPage extends Vue {
     );
   }
 }
-
 export default toNative(ComponentPage);

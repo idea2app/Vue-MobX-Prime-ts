@@ -1,30 +1,36 @@
-import { Component, toNative, Vue, Prop } from 'vue-facing-decorator';
+import { Component, toNative, Vue, Prop, TSX } from 'vue-facing-decorator';
 import { observer } from 'mobx-vue-helper';
 import PrimeImage from 'primevue/image';
 
 import Overlay from './Overlay';
 
+export interface ImageProps {
+  src: string;
+}
+
 @Component
 @observer
-class Image extends Vue {
-  @Prop({ type: String }) readonly src?: string;
+class Image extends TSX<ImageProps>()(Vue) {
+  @Prop({ type: String, required: true })
+  readonly src!: string;
 
-  loading = true;
+  downloading = true;
 
   render() {
+    const { src, downloading } = this;
+
     return (
-      <Overlay class="text-center" show={this.loading}>
+      <Overlay class="text-center" show={downloading}>
         <PrimeImage
           preview
-          src={this.src}
+          src={src}
           {...{
-            onLoad: () => (this.loading = false),
-            onError: () => (this.loading = false)
+            onLoad: () => (this.downloading = false),
+            onError: () => (this.downloading = false)
           }}
         />
       </Overlay>
     );
   }
 }
-
 export default toNative(Image);
