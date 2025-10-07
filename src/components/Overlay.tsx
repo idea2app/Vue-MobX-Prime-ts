@@ -2,7 +2,7 @@ import { FunctionalComponent } from 'vue';
 import { observer } from 'mobx-vue-helper';
 import ProgressSpinner from 'primevue/progressspinner';
 
-import styles from './Overlay.module.less';
+import * as styles from './Overlay.module.less';
 
 interface OverlayProps extends Record<string, unknown> {
   show?: boolean;

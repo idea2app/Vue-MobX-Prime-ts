@@ -1,4 +1,4 @@
-import { Component, toNative, Vue } from 'vue-facing-decorator';
+import { Component, toNative, Vue, Setup } from 'vue-facing-decorator';
 import { observer } from 'mobx-vue-helper';
 
 import Button from 'primevue/button';
@@ -21,7 +21,7 @@ import ImageUploader from '../components/ImageUploader';
 import Downloader from '../components/Downloader';
 
 import { downloader } from '../models/service';
-import styles from './Component.module.less';
+import * as styles from './Component.module.less';
 
 const tree = [
   {
@@ -41,31 +41,32 @@ const tree = [
 @Component
 @observer
 class ComponentPage extends Vue {
-  date: any = undefined;
+  date?: Date;
   openDialog = false;
-  confirm = useConfirm();
 
-  download() {
+  @Setup(() => useConfirm())
+  confirm!: ReturnType<typeof useConfirm>;
+
+  download = () => {
     const task = downloader.createTask(
       'https://ows.blob.core.chinacloudapi.cn/$web/file/001%E6%B1%9F%E6%B3%A2.png',
       'test'
     );
     task.start({ chunkSize: 1024 ** 2 / 2 });
-  }
+  };
 
-  closeDialog(data: any) {
+  closeDialog = (data: any) => {
     this.openDialog = false;
     console.log(data);
-  }
+  };
 
-  openConfirm() {
+  openConfirm = () =>
     this.confirm.require({
       header: 'Confirm',
       message: 'Yes or No ?',
       accept: console.info,
       reject: console.error
     });
-  }
 
   render() {
     return (
@@ -130,7 +131,7 @@ class ComponentPage extends Vue {
         <ImageUploader class="mb-4" />
 
         <h2 class="mt-4">Downloader</h2>
-        <Button onClick={this.download.bind(this)}>download</Button>
+        <Button onClick={this.download}>download</Button>
         {/* @ts-expect-error - Component props typing */}
         <Downloader class="mt-4" />
 
@@ -145,7 +146,7 @@ class ComponentPage extends Vue {
               e.preventDefault();
               this.closeDialog(e);
             }}
-            onReset={this.closeDialog.bind(this)}
+            onReset={this.closeDialog}
           >
             <FloatLabel class="my-3">
               <InputText id="example-input" name="test" required />
@@ -161,7 +162,7 @@ class ComponentPage extends Vue {
         </Dialog>
 
         <h2 class="mt-4">Confirm</h2>
-        <Button severity="primary" onClick={this.openConfirm.bind(this)}>
+        <Button severity="primary" onClick={this.openConfirm}>
           Open Confirm
         </Button>
         <ConfirmDialog />

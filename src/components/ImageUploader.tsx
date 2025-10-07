@@ -2,20 +2,28 @@ import { Component, toNative, Vue, Watch, Prop } from 'vue-facing-decorator';
 import { observer } from 'mobx-vue-helper';
 
 import Overlay from './Overlay';
-import styles from './ImageUploader.module.less';
+import * as styles from './ImageUploader.module.less';
 
 @Component
 @observer
 class ImageUploader extends Vue {
-  @Prop({ type: String }) readonly name?: string;
-  @Prop({ type: Boolean }) readonly required?: boolean;
-  @Prop({ type: Boolean }) readonly disabled?: boolean;
-  @Prop({ type: String }) readonly accept?: string;
-  @Prop({ type: String }) readonly value?: string;
-  @Prop({ type: Function }) readonly upload?: (
-    name: string,
-    file: File
-  ) => Promise<void>;
+  @Prop({ type: String })
+  readonly name?: string;
+
+  @Prop({ type: Boolean })
+  readonly required?: boolean;
+
+  @Prop({ type: Boolean })
+  readonly disabled?: boolean;
+
+  @Prop({ type: String })
+  readonly accept?: string;
+
+  @Prop({ type: String })
+  readonly value?: string;
+
+  @Prop({ type: Function })
+  readonly upload?: (name: string, file: File) => Promise<void>;
 
   URI = '';
   angle = 0;
@@ -26,7 +34,7 @@ class ImageUploader extends Vue {
     this.URI = path;
   }
 
-  async preview(event: Event) {
+  preview = async (event: Event) => {
     const { name, files } = event.target as HTMLInputElement;
 
     if (!files?.[0]) return;
@@ -41,39 +49,33 @@ class ImageUploader extends Vue {
       await this.upload(name, files[0]);
       this.loading = false;
     }
-  }
+  };
 
-  rotate() {
-    this.angle += 90;
-  }
+  rotate = () => (this.angle += 90);
 
   render() {
-    const showClass = this.URI ? styles.show : '';
+    const { URI, angle, loading, name, required, disabled, accept } = this;
+    const showClass = URI ? styles.show : '';
+
     return (
-      <Overlay
-        class={[styles.box, showClass, { show: this.URI }]}
-        show={this.loading}
-      >
-        {this.URI && (
+      <Overlay class={[styles.box, showClass, { show: URI }]} show={loading}>
+        {URI && (
           <img
             class={['image max-w-full max-h-full', styles.image]}
-            style={{ transform: `rotate(${this.angle}deg)` }}
-            src={this.URI}
+            style={{ transform: `rotate(${angle}deg)` }}
+            src={URI}
           />
         )}
         <input
           type="file"
-          name={this.name}
-          required={this.required}
-          disabled={this.disabled}
-          accept={this.accept || 'image/*'}
-          onChange={this.preview.bind(this)}
+          name={name}
+          required={required}
+          disabled={disabled}
+          accept={accept || 'image/*'}
+          onChange={this.preview}
         />
-        {this.URI && (
-          <i
-            class={['pi pi-refresh', styles.rotate]}
-            onClick={this.rotate.bind(this)}
-          />
+        {URI && (
+          <i class={['pi pi-refresh', styles.rotate]} onClick={this.rotate} />
         )}
       </Overlay>
     );
