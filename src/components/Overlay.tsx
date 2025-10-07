@@ -4,11 +4,11 @@ import ProgressSpinner from 'primevue/progressspinner';
 
 import * as styles from './Overlay.module.less';
 
-interface OverlayProps extends Record<string, unknown> {
+export interface OverlayProps extends Record<string, unknown> {
   show?: boolean;
 }
 
-const Overlay: FunctionalComponent<OverlayProps> = ({ show }, { slots }) => (
+export const Overlay: FunctionalComponent<OverlayProps> = observer(({ show }, { slots }) => (
   <div class={[styles.box, { 'bg-light rounded-sm': show, show }]}>
     {slots.default?.()}
 
@@ -18,6 +18,4 @@ const Overlay: FunctionalComponent<OverlayProps> = ({ show }, { slots }) => (
       </div>
     )}
   </div>
-);
-
-export default observer(Overlay);
+));

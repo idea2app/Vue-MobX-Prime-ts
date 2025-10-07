@@ -1,12 +1,11 @@
 import { FunctionalComponent } from 'vue';
-import { observer } from 'mobx-vue-helper';
 
-interface StockNumberProps extends Record<string, unknown> {
+export interface StockNumberProps {
   value?: number;
   extent: number;
 }
 
-const StockNumber: FunctionalComponent<StockNumberProps> = (
+export const StockNumber: FunctionalComponent<StockNumberProps> = (
   { extent, value },
   { slots }
 ) => (
@@ -22,5 +21,3 @@ const StockNumber: FunctionalComponent<StockNumberProps> = (
     {slots.after?.()}
   </span>
 );
-
-export default observer(StockNumber);

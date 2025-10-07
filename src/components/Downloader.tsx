@@ -1,3 +1,4 @@
+import { FunctionalComponent } from 'vue';
 import { observer } from 'mobx-vue-helper';
 import { DownloadTask } from 'mobx-downloader';
 import ProgressBar from 'primevue/progressbar';
@@ -6,7 +7,7 @@ import Card from 'primevue/card';
 import { IconButton } from './IconButton';
 import { downloader } from '../models/service';
 
-const DownloadTaskCard = observer(({ task }: { task: DownloadTask }) => (
+const DownloadTaskCard: FunctionalComponent<{ task: DownloadTask }> = observer(({ task }) => (
   <Card>
     {{
       title: () => (
@@ -28,19 +29,14 @@ const DownloadTaskCard = observer(({ task }: { task: DownloadTask }) => (
               </>
             )}
             {!task.executing && (
-              <IconButton
-                icon="times"
-                onClick={() => downloader.destroyTask(task.name)}
-              />
+              <IconButton icon="times" onClick={() => downloader.destroyTask(task.name)} />
             )}
           </div>
         </div>
       ),
       content: () => (
         <ProgressBar
-          mode={
-            task.executing && !task.percent ? 'indeterminate' : 'determinate'
-          }
+          mode={task.executing && !task.percent ? 'indeterminate' : 'determinate'}
           value={task.percent}
         />
       )

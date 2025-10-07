@@ -15,7 +15,7 @@ import Dialog from 'primevue/dialog';
 import { useConfirm } from 'primevue/useconfirm';
 import ConfirmDialog from 'primevue/confirmdialog';
 
-import StockNumber from '../components/StockNumber';
+import { StockNumber } from '../components/StockNumber';
 import Image from '../components/Image';
 import ImageUploader from '../components/ImageUploader';
 import Downloader from '../components/Downloader';
@@ -110,11 +110,7 @@ class ComponentPage extends Vue {
         <Tree class="text-start" value={tree} />
 
         <h2 class="mt-4">Date Range</h2>
-        <DatePicker
-          selectionMode="range"
-          updateModelType="date"
-          v-model={this.date}
-        />
+        <DatePicker selectionMode="range" updateModelType="date" v-model={this.date} />
 
         <h2 class="mt-4">Image</h2>
         <Image src="https://github.com/idea2app.png" />

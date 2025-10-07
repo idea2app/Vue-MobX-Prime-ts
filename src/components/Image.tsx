@@ -2,7 +2,7 @@ import { Component, toNative, Vue, Prop, TSX } from 'vue-facing-decorator';
 import { observer } from 'mobx-vue-helper';
 import PrimeImage from 'primevue/image';
 
-import Overlay from './Overlay';
+import { Overlay } from './Overlay';
 
 export interface ImageProps {
   src: string;

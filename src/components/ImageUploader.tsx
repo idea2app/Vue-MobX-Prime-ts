@@ -1,7 +1,7 @@
 import { Component, toNative, Vue, Watch, Prop, TSX } from 'vue-facing-decorator';
 import { observer } from 'mobx-vue-helper';
 
-import Overlay from './Overlay';
+import { Overlay } from './Overlay';
 import * as styles from './ImageUploader.module.less';
 
 @Component
