@@ -1,12 +1,16 @@
 import { Component, toNative, Vue, Setup } from 'vue-facing-decorator';
+import { observable } from 'mobx';
 import { observer } from 'mobx-vue-helper';
+import { formToJSON } from 'web-utility';
 
 import Button from 'primevue/button';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Panel from 'primevue/panel';
 import Stepper from 'primevue/stepper';
-import StepperPanel from 'primevue/steppanel';
+import Step from 'primevue/step';
+import StepItem from 'primevue/stepitem';
+import StepPanel from 'primevue/steppanel';
 import Tree from 'primevue/tree';
 import DatePicker from 'primevue/datepicker';
 import FloatLabel from 'primevue/floatlabel';
@@ -21,7 +25,7 @@ import ImageUploader from '../components/ImageUploader';
 import Downloader from '../components/Downloader';
 
 import { downloader } from '../models/service';
-import * as styles from './Component.module.less';
+import * as styles from './Component.module.css';
 
 const tree = [
   {
@@ -38,11 +42,26 @@ const tree = [
   }
 ];
 
+class DialogModel {
+  @observable
+  accessor shown = false;
+
+  open = () => (this.shown = true);
+
+  close = (event: Event) => {
+    event.preventDefault();
+
+    this.shown = false;
+
+    console.log(formToJSON(event.target as HTMLFormElement));
+  };
+}
+const dialogState = new DialogModel();
+
 @Component
 @observer
 class ComponentPage extends Vue {
   date?: Date;
-  openDialog = false;
 
   @Setup(() => useConfirm())
   confirm!: ReturnType<typeof useConfirm>;
@@ -53,12 +72,6 @@ class ComponentPage extends Vue {
       'test'
     );
     task.start({ chunkSize: 1024 ** 2 / 2 });
-  };
-
-  closeDialog = (event: Event) => {
-    event.preventDefault();
-
-    this.openDialog = false;
   };
 
   openConfirm = () =>
@@ -87,9 +100,15 @@ class ComponentPage extends Vue {
 
         <h2 class="mt-4">Stepper</h2>
 
-        <Stepper>
-          <StepperPanel></StepperPanel>
-          <StepperPanel></StepperPanel>
+        <Stepper value="1">
+          <StepItem value="1">
+            <Step>Header I</Step>
+            <StepPanel>Content I</StepPanel>
+          </StepItem>
+          <StepItem value="2">
+            <Step>Header II</Step>
+            <StepPanel>Content II</StepPanel>
+          </StepItem>
         </Stepper>
 
         <h2 class="mt-4">Table</h2>
@@ -125,12 +144,12 @@ class ComponentPage extends Vue {
         </div>
 
         <h2 class="mt-4">Dialog</h2>
-        <Button severity="primary" onClick={() => (this.openDialog = true)}>
+        <Button severity="primary" onClick={dialogState.open}>
           Open Dialog
         </Button>
 
-        <Dialog modal header="form" visible={this.openDialog}>
-          <form onSubmit={this.closeDialog} onReset={this.closeDialog}>
+        <Dialog modal header="form" visible={dialogState.shown}>
+          <form onSubmit={dialogState.close} onReset={dialogState.close}>
             <FloatLabel class="my-3">
               <InputText id="example-input" name="test" required />
               <label for="example-input">input</label>

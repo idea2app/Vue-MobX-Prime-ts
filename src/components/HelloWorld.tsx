@@ -2,7 +2,7 @@ import { Component, toNative, Vue, Prop, TSX } from 'vue-facing-decorator';
 import { observer } from 'mobx-vue-helper';
 import Button from 'primevue/button';
 
-import * as styles from './HelloWorld.module.less';
+import * as styles from './HelloWorld.module.css';
 
 @Component
 @observer

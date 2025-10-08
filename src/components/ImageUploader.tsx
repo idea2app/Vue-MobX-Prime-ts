@@ -2,7 +2,7 @@ import { Component, toNative, Vue, Watch, Prop, TSX } from 'vue-facing-decorator
 import { observer } from 'mobx-vue-helper';
 
 import { Overlay } from './Overlay';
-import * as styles from './ImageUploader.module.less';
+import * as styles from './ImageUploader.module.css';
 
 @Component
 @observer
@@ -59,14 +59,17 @@ class ImageUploader extends TSX<{ class?: string }>()(Vue) {
 
     return (
       <Overlay class={[styles.box, showClass, { show: URI }]} show={loading}>
-        {URI && (
+        {URI ? (
           <img
             class={['image max-w-full max-h-full', styles.image]}
             style={{ transform: `rotate(${angle}deg)` }}
             src={URI}
           />
+        ) : (
+          <div class={styles.cover} />
         )}
         <input
+          class={styles.input}
           type="file"
           {...{ name, required, disabled }}
           accept={accept || 'image/*'}

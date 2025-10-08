@@ -1,0 +1,8 @@
+.tableCenter :global(th .p-column-header-content) {
+  justify-content: center;
+}
+
+.tableCenter :global(th),
+.tableCenter :global(td) {
+  text-align: center;
+}

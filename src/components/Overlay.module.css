@@ -1,0 +1,23 @@
+.box {
+  position: relative;
+}
+
+.box.show::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  inset: 0;
+  opacity: 0.85;
+  backdrop-filter: blur(2px);
+}
+
+.box.show .spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
