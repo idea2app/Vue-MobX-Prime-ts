@@ -66,32 +66,35 @@ class ComponentPage extends Vue {
   @Setup(() => useConfirm())
   confirm!: ReturnType<typeof useConfirm>;
 
-  download = () => {
+  download() {
     const task = downloader.createTask(
       'https://ows.blob.core.chinacloudapi.cn/$web/file/001%E6%B1%9F%E6%B3%A2.png',
       'test'
     );
     task.start({ chunkSize: 1024 ** 2 / 2 });
-  };
+  }
 
-  openConfirm = () =>
+  openConfirm() {
     this.confirm.require({
       header: 'Confirm',
       message: 'Yes or No ?',
       accept: console.info,
       reject: console.error
     });
+  }
 
   render() {
     return (
       <div class="text-left">
         <h2>Stock Number</h2>
-        <StockNumber extent={0.3} value={0.3}>
-          {{ after: () => <span>%</span> }}
-        </StockNumber>
-        <StockNumber extent={-0.5} value={0.5}>
-          {{ after: () => <span>%</span> }}
-        </StockNumber>
+        <div class="flex gap-2">
+          <StockNumber extent={0.3} value={0.3}>
+            {{ after: () => <span>%</span> }}
+          </StockNumber>
+          <StockNumber extent={-0.5} value={0.5}>
+            {{ after: () => <span>%</span> }}
+          </StockNumber>
+        </div>
 
         <h2 class="mt-4">Panel</h2>
         <Panel toggleable header="Panel">
@@ -139,7 +142,7 @@ class ComponentPage extends Vue {
 
         <h2 class="mt-4">Downloader</h2>
         <div class="d-flex flex-col gap-4">
-          <Button onClick={this.download}>download</Button>
+          <Button onClick={() => this.download()}>download</Button>
           <Downloader />
         </div>
 
@@ -164,7 +167,7 @@ class ComponentPage extends Vue {
         </Dialog>
 
         <h2 class="mt-4">Confirm</h2>
-        <Button severity="primary" onClick={this.openConfirm}>
+        <Button severity="primary" onClick={() => this.openConfirm()}>
           Open Confirm
         </Button>
         <ConfirmDialog />

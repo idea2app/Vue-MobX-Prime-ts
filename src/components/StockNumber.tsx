@@ -11,6 +11,8 @@ export const StockNumber: FunctionalComponent<StockNumberProps> = (
 ) => (
   <span
     class={{
+      'inline-flex': true,
+      'gap-1': true,
       'text-red-500': extent > 0,
       'text-gray-500': extent === 0,
       'text-green-500': extent < 0

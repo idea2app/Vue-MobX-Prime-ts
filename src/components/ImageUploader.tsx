@@ -34,7 +34,7 @@ class ImageUploader extends TSX<{ class?: string }>()(Vue) {
     this.URI = path;
   }
 
-  preview = async (event: Event) => {
+  async preview(event: Event) {
     const { name, files } = event.target as HTMLInputElement;
 
     if (!files?.[0]) return;
@@ -49,33 +49,36 @@ class ImageUploader extends TSX<{ class?: string }>()(Vue) {
       await this.upload(name, files[0]);
       this.loading = false;
     }
-  };
+  }
 
-  rotate = () => (this.angle += 90);
+  rotate() {
+    this.angle += 90;
+  }
 
   render() {
     const { URI, angle, loading, name, required, disabled, accept } = this;
-    const showClass = URI ? styles.show : '';
 
     return (
-      <Overlay class={[styles.box, showClass, { show: URI }]} show={loading}>
-        {URI ? (
-          <img
-            class={['image max-w-full max-h-full', styles.image]}
-            style={{ transform: `rotate(${angle}deg)` }}
-            src={URI}
+      <Overlay show={loading}>
+        <div class={[styles.box, { [styles.show!]: URI }]}>
+          {URI ? (
+            <img
+              class={['image max-w-full max-h-full', styles.image]}
+              style={{ transform: `rotate(${angle}deg)` }}
+              src={URI}
+            />
+          ) : (
+            <div class={styles.cover}>+</div>
+          )}
+          <input
+            class={styles.input}
+            type="file"
+            {...{ name, required, disabled }}
+            accept={accept || 'image/*'}
+            onChange={event => this.preview(event)}
           />
-        ) : (
-          <div class={styles.cover} />
-        )}
-        <input
-          class={styles.input}
-          type="file"
-          {...{ name, required, disabled }}
-          accept={accept || 'image/*'}
-          onChange={this.preview}
-        />
-        {URI && <i class={['pi pi-refresh', styles.rotate]} onClick={this.rotate} />}
+          {URI && <i class={['pi pi-refresh', styles.rotate]} onClick={() => this.rotate()} />}
+        </div>
       </Overlay>
     );
   }

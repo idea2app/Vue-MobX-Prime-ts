@@ -10,7 +10,6 @@
 }
 
 .cover {
-  content: '+';
   font-size: 5rem;
   color: var(--primary);
   position: absolute;
