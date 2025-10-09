@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 
-import Home from './views/Home.vue';
+import Home from './views/Home';
 
 export default createRouter({
   history: createWebHashHistory(),
@@ -12,19 +12,19 @@ export default createRouter({
     },
     {
       path: '/decorator/class',
-      component: () => import('./views/ClassDecorator.tsx')
+      component: () => import('./views/ClassDecorator')
     },
     {
       path: '/decorator/function',
-      component: () => import('./views/FunctionDecorator.tsx')
+      component: () => import('./views/FunctionDecorator')
     },
     {
       path: '/component',
-      component: () => import('./views/Component.vue')
+      component: () => import('./views/Component')
     },
     {
       path: '/chart',
-      component: () => import('./views/Chart.vue')
+      component: () => import('./views/Chart')
     },
     {
       path: '/about',
@@ -32,8 +32,7 @@ export default createRouter({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: () => import(/* webpackChunkName: "about" */ './views/About')
     }
   ]
 });

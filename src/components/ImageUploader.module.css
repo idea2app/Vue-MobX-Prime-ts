@@ -1,0 +1,46 @@
+.box {
+  height: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 2px dashed var(--primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.cover {
+  font-size: 5rem;
+  color: var(--primary);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.image {
+  transition: 0.25s;
+}
+
+.rotate {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.box.show {
+  border: none;
+}
+
+.box.show::before {
+  content: none;
+}

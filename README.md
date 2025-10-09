@@ -21,11 +21,11 @@ This template should help get you started developing with Vue 3 and Typescript i
 
 ## Extra components
 
-1. [`<StockNumber />`](src/components/StockNumber.vue)
-2. [`<Overlay />`](src/components/Overlay.vue)
-3. [`<Image />`](src/components/Image.vue)
-4. [`<ImageUploader />`](src/components/ImageUploader.vue)
-5. [`<Downloader />`](src/components/Downloader.vue)
+1. [`<StockNumber />`](src/components/StockNumber.tsx)
+2. [`<Overlay />`](src/components/Overlay.tsx)
+3. [`<Image />`](src/components/Image.tsx)
+4. [`<ImageUploader />`](src/components/ImageUploader.tsx)
+5. [`<Downloader />`](src/components/Downloader.tsx)
 
 ## MobX Observer decorator
 
@@ -114,11 +114,9 @@ npm test
 
 ## Recommended IDE Setup
 
-- [VSCode][17] + [Volar][24]
+- [VSCode][17] + [TypeScript][2] official extension + [Prettier][25] formatter extension
 
-### Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+Ditch Volar and go back to the official TypeScript and Prettier extensions for a high-performance, high-quality development experience.
 
 [1]: https://vuejs.org/
 [2]: https://www.typescriptlang.org/
@@ -144,3 +142,4 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 [22]: https://github.com/idea2app/Vue-MobX-Prime-ts/issues/new/choose
 [23]: https://github.com/idea2app/Vue-MobX-Prime-ts/projects
 [24]: https://marketplace.visualstudio.com/items?itemName=vue.volar
+[25]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
