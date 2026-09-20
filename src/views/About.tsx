@@ -21,7 +21,7 @@ class About extends Vue {
   }
 
   renderProjectCard = ({ id, logo, name, description, homepage, html_url }: Project) => (
-    <div class="col-12 sm:col-6 lg:col-3" key={id}>
+    <div class="col-12 sm:col-6 lg:col-3" key={id + ''}>
       <Card>
         {{
           header: () => <img class="w-full" src={logo} />,
