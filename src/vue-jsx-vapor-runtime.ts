@@ -17,12 +17,11 @@ import {
 } from 'vue';
 
 const cacheMap = new WeakMap<object, Record<string, any[]>>();
-const fallbackCaches: Record<string, any[]> = {};
 
 export function createVNodeCache(key: string) {
   const instance = getCurrentInstance();
 
-  if (!instance) return fallbackCaches[key] || (fallbackCaches[key] = []);
+  if (!instance) return [];
 
   if (!cacheMap.has(instance)) cacheMap.set(instance, {});
 
@@ -80,14 +79,13 @@ export const normalizeClass = (value: any) => normalizeClassValue(value) || null
 
 export const For = defineComponent(
   (props: { in: any }, { slots }) => {
-    const defaultSlot = slots.default;
-
     return () =>
       (openBlock(true),
       createElementBlock(
         Fragment,
         null,
         renderList(props.in, (item: any, key: any, index: any) => {
+          const defaultSlot = slots.default;
           const result = defaultSlot?.(item, key, index);
 
           return Array.isArray(result)
