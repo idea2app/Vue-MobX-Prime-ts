@@ -28,6 +28,7 @@
     "@parcel/config-default": "~2.16.0",
     "@parcel/packager-raw-url": "~2.16.0",
     "@parcel/plugin": "~2.16.0",
+    "@parcel/source-map": "2.1.1",
     "@parcel/transformer-vue": "~2.16.0",
     "@parcel/transformer-webmanifest": "~2.16.0",
     "@types/node": "^22.18.8",

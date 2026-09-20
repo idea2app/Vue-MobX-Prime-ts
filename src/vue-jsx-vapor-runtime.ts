@@ -17,11 +17,12 @@ import {
 } from 'vue';
 
 const cacheMap = new WeakMap<object, Record<string, any[]>>();
+const fallbackCaches: Record<string, any[]> = {};
 
 export function createVNodeCache(key: string) {
   const instance = getCurrentInstance();
 
-  if (!instance) return [];
+  if (!instance) return fallbackCaches[key] || (fallbackCaches[key] = []);
 
   if (!cacheMap.has(instance)) cacheMap.set(instance, {});
 

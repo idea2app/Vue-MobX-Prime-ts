@@ -1,7 +1,7 @@
 lockfileVersion: '9.0'
 
 settings:
-  autoInstallPeers: false
+  autoInstallPeers: true
   excludeLinksFromLockfile: false
 
 importers:
@@ -78,6 +78,9 @@ importers:
       '@parcel/plugin':
         specifier: ~2.16.0
         version: 2.16.0(@parcel/core@2.16.0(@swc/helpers@0.5.17))
+      '@parcel/source-map':
+        specifier: 2.1.1
+        version: 2.1.1
       '@parcel/transformer-vue':
         specifier: ~2.16.0
         version: 2.16.0(@babel/core@7.28.4(supports-color@7.2.0))(@parcel/core@2.16.0(@swc/helpers@0.5.17))(ejs@3.1.10)(lodash@4.17.21)
