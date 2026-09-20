@@ -44,7 +44,7 @@ export function normalizeVNode(value: any, flag = 1): any {
     value = value();
   }
 
-  if (isVNode(value)) return block ? createBlock(cloneIfMounted(value)) : cloneIfMounted(value);
+  if (isVNode(value)) return cloneIfMounted(value);
   if (Array.isArray(value))
     return block
       ? createElementBlock(
@@ -64,6 +64,7 @@ const normalizeSlotValue = (value: any) =>
 
 export const normalizeSlot = (rawSlot: any) => {
   if (rawSlot._n) return rawSlot;
+  if (typeof rawSlot !== 'function') return withCtx(() => normalizeSlotValue(rawSlot));
 
   return withCtx((...args: any[]) => normalizeSlotValue(rawSlot(...args)));
 };
