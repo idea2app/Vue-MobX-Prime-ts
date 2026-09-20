@@ -7,7 +7,6 @@ const ParcelSourceMap = SourceMap.default;
 
 export default new Transformer({
   async transform({ asset, options }) {
-    asset.invalidateOnFileChange(join(options.projectRoot, 'src/vue-jsx-vapor-runtime.ts'));
     asset.invalidateOnFileChange(join(options.projectRoot, 'parcel-transformer-vue-tsx-vapor.mjs'));
 
     const source = await asset.getCode();
@@ -16,7 +15,7 @@ export default new Transformer({
       sourceMap: Boolean(asset.env.sourceMap),
       interop: true,
       hmr: options.mode === 'development',
-      runtimeModuleName: 'vue-jsx-vapor-runtime'
+      runtimeModuleName: '@vue-jsx-vapor/runtime'
     });
 
     asset.type = 'js';

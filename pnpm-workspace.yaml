@@ -1,0 +1,15 @@
+packages:
+  - .
+autoInstallPeers: false
+minimumReleaseAge: 0
+
+overrides:
+  vue: 3.6.0-rc.9
+
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  core-js: true
+  lmdb: true
+  msgpackr-extract: true
+  vue-demi: true
