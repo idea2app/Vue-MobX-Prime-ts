@@ -32,7 +32,6 @@
     "@parcel/transformer-webmanifest": "~2.16.0",
     "@types/node": "^22.18.8",
     "@vue-jsx-vapor/compiler-rs": "^3.2.24",
-    "@vue-jsx-vapor/runtime": "^3.2.24",
     "@vue/tsconfig": "^0.8.1",
     "buffer": "^6.0.3",
     "husky": "^9.1.7",
@@ -57,6 +56,9 @@
   },
   "@parcel/resolver-default": {
     "packageExports": true
+  },
+  "alias": {
+    "vue-jsx-vapor-runtime": "./src/vue-jsx-vapor-runtime.ts"
   },
   "prettier": {
     "singleQuote": true,

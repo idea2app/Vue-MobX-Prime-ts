@@ -1,7 +1,7 @@
 lockfileVersion: '9.0'
 
 settings:
-  autoInstallPeers: true
+  autoInstallPeers: false
   excludeLinksFromLockfile: false
 
 importers:
@@ -90,9 +90,6 @@ importers:
       '@vue-jsx-vapor/compiler-rs':
         specifier: ^3.2.24
         version: 3.2.24
-      '@vue-jsx-vapor/runtime':
-        specifier: ^3.2.24
-        version: 3.2.24(vue@3.5.22(typescript@5.9.3))
       '@vue/tsconfig':
         specifier: ^0.8.1
         version: 0.8.1(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3))
@@ -1616,11 +1613,6 @@ packages:
 
   '@vue-jsx-vapor/compiler-rs@3.2.24':
     resolution: {integrity: sha512-dtzG8pM6aVoObZ4VATvVw12xq1te5AH+QUIrawx1w6GaodqthCq8c2UKSCl8oNKiLBHffuqkzVSy6R+UyhZR0g==}
-
-  '@vue-jsx-vapor/runtime@3.2.24':
-    resolution: {integrity: sha512-D0RISbFWIboSoiZ/z8l8GwVw6ojJmaMOUJNRa36qRW/wM1BWwDzrCSz/I4Do2hvYn4KLk+Izs0axo7x55T5k3g==}
-    peerDependencies:
-      vue: 3.6.0-rc.8
 
   '@vue/compiler-core@3.5.22':
     resolution: {integrity: sha512-jQ0pFPmZwTEiRNSb+i9Ow/I/cHv2tXYqsnHKKyCQ08irI2kdF5qmYedmF8si8mA7zepUFmJ2hqzS8CQmNOWOkQ==}
@@ -5605,10 +5597,6 @@ snapshots:
       '@vue-jsx-vapor/compiler-rs-win32-arm64-msvc': 3.2.24
       '@vue-jsx-vapor/compiler-rs-win32-ia32-msvc': 3.2.24
       '@vue-jsx-vapor/compiler-rs-win32-x64-msvc': 3.2.24
-
-  '@vue-jsx-vapor/runtime@3.2.24(vue@3.5.22(typescript@5.9.3))':
-    dependencies:
-      vue: 3.5.22(typescript@5.9.3)
 
   '@vue/compiler-core@3.5.22':
     dependencies:

@@ -9,7 +9,7 @@ module.exports = new Transformer({
       sourceMap: Boolean(asset.env.sourceMap),
       interop: true,
       hmr: options.mode === 'development',
-      runtimeModuleName: '@vue-jsx-vapor/runtime/dist/vdom.js'
+      runtimeModuleName: 'vue-jsx-vapor-runtime'
     })
 
     asset.type = 'js'
