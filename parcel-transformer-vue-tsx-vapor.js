@@ -6,7 +6,7 @@ module.exports = new Transformer({
     const source = await asset.getCode()
     const { code } = transform(source, {
       filename: asset.filePath,
-      sourceMap: Boolean(asset.env.sourceMap),
+      sourceMap: false,
       interop: true,
       hmr: options.mode === 'development',
       runtimeModuleName: 'vue-jsx-vapor-runtime'

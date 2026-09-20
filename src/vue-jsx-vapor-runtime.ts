@@ -77,7 +77,7 @@ export const normalizeSlots = (slots: any) =>
 export const normalizeClass = (value: any) => normalizeClassValue(value) || null;
 
 export const For = defineComponent(
-  (props: { in: any[] }, { slots }) => {
+  (props: { in: any }, { slots }) => {
     const defaultSlot = slots.default;
 
     return () =>
