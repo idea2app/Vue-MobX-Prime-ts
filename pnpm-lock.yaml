@@ -81,12 +81,6 @@ importers:
       '@parcel/packager-raw-url':
         specifier: ~2.16.4
         version: 2.16.4(@parcel/core@2.16.4(@swc/helpers@0.5.23))
-      '@parcel/plugin':
-        specifier: ~2.16.4
-        version: 2.16.4(@parcel/core@2.16.4(@swc/helpers@0.5.23))
-      '@parcel/source-map':
-        specifier: 2.1.1
-        version: 2.1.1
       '@parcel/transformer-vue':
         specifier: ~2.16.4
         version: 2.16.4(@babel/core@7.29.7(supports-color@7.2.0))(@parcel/core@2.16.4(@swc/helpers@0.5.23))(ejs@3.1.10)(lodash@4.18.1)
@@ -96,9 +90,6 @@ importers:
       '@types/node':
         specifier: ^24.13.6
         version: 24.13.6
-      '@vue-jsx-vapor/compiler-rs':
-        specifier: ^3.2.25
-        version: 3.2.25
       '@vue/tsconfig':
         specifier: ^0.9.1
         version: 0.9.1(typescript@6.0.3)(vue@3.6.0-rc.9(typescript@6.0.3))
@@ -117,6 +108,9 @@ importers:
       parcel:
         specifier: ~2.16.4
         version: 2.16.4(@swc/helpers@0.5.23)
+      parcel-transformer-vue-tsx:
+        specifier: ^0.1.0
+        version: 0.1.0(@parcel/config-default@2.16.4(@parcel/core@2.16.4(@swc/helpers@0.5.23))(@swc/helpers@0.5.23))(@parcel/core@2.16.4(@swc/helpers@0.5.23))(@vue-jsx-vapor/runtime@3.2.25(vue@3.6.0-rc.9(typescript@6.0.3)))(parcel@2.16.4(@swc/helpers@0.5.23))
       postcss:
         specifier: ^8.5.28
         version: 8.5.28
@@ -3109,6 +3103,17 @@ packages:
   package-json@10.0.1:
     resolution: {integrity: sha512-ua1L4OgXSBdsu1FPb7F3tYH0F48a6kxvod4pLUlGY9COeJAJQNX/sNH2IiEmsxw7lqYiAwrdHMjz1FctOsyDQg==}
     engines: {node: '>=18'}
+
+  parcel-transformer-vue-tsx@0.1.0:
+    resolution: {integrity: sha512-xwjfHRACAizctKNZY46vIhCn/w/KdeBG0MUJsk2Z2f1MPdGuAMTia/T4eY2r/2J1Lq9BhKrPLdoeUCApkwvFkg==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      '@parcel/config-default': ^2
+      '@vue-jsx-vapor/runtime': ^3
+      parcel: ^2
+    peerDependenciesMeta:
+      '@parcel/config-default':
+        optional: true
 
   parcel@2.16.4:
     resolution: {integrity: sha512-RQlrqs4ujYNJpTQi+dITqPKNhRWEqpjPd1YBcGp50Wy3FcJHpwu0/iRm7XWz2dKU/Bwp2qCcVYPIeEDYi2uOUw==}
@@ -7243,6 +7248,19 @@ snapshots:
       registry-auth-token: 5.1.1
       registry-url: 6.0.1
       semver: 7.8.5
+
+  parcel-transformer-vue-tsx@0.1.0(@parcel/config-default@2.16.4(@parcel/core@2.16.4(@swc/helpers@0.5.23))(@swc/helpers@0.5.23))(@parcel/core@2.16.4(@swc/helpers@0.5.23))(@vue-jsx-vapor/runtime@3.2.25(vue@3.6.0-rc.9(typescript@6.0.3)))(parcel@2.16.4(@swc/helpers@0.5.23)):
+    dependencies:
+      '@parcel/plugin': 2.16.4(@parcel/core@2.16.4(@swc/helpers@0.5.23))
+      '@parcel/source-map': 2.1.1
+      '@vue-jsx-vapor/compiler-rs': 3.2.25
+      '@vue-jsx-vapor/runtime': 3.2.25(vue@3.6.0-rc.9(typescript@6.0.3))
+      parcel: 2.16.4(@swc/helpers@0.5.23)
+    optionalDependencies:
+      '@parcel/config-default': 2.16.4(@parcel/core@2.16.4(@swc/helpers@0.5.23))(@swc/helpers@0.5.23)
+    transitivePeerDependencies:
+      - '@parcel/core'
+      - napi-wasm
 
   parcel@2.16.4(@swc/helpers@0.5.23):
     dependencies:
