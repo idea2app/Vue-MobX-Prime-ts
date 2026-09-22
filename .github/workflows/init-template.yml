@@ -5,7 +5,7 @@ on:
       - master
 env:
   TEMPLATE_OWNER: idea2app
-  TEMPLATE_NAME: Vue-MobX-Prime-ts
+  TEMPLATE_NAME: Vue-MobX-Shadcn-ts
 
 jobs:
   replace-repository-name:

@@ -1,6 +1,5 @@
 import { FunctionalComponent } from 'vue';
 import { observer } from 'mobx-vue-helper';
-import ProgressSpinner from 'primevue/progressspinner';
 
 import * as styles from './Overlay.module.css';
 
@@ -14,7 +13,7 @@ export const Overlay: FunctionalComponent<OverlayProps> = observer(({ show }, { 
 
     {show && (
       <div class={styles.spinner}>
-        <ProgressSpinner />
+        <span class="inline-block size-8 animate-spin rounded-full border-4 border-current border-t-transparent" />
       </div>
     )}
   </div>

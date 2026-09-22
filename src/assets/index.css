@@ -1,0 +1,119 @@
+@import 'tailwindcss' source('../');
+
+@source "../components";
+@source "../components/ui";
+@source "../views";
+
+:root {
+  --background: #ffffff;
+  --foreground: #172033;
+  --card: #ffffff;
+  --card-foreground: #172033;
+  --popover: #ffffff;
+  --popover-foreground: #172033;
+  --primary: #159a72;
+  --primary-foreground: #ffffff;
+  --secondary: #eef5f3;
+  --secondary-foreground: #173b33;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #e3f5ef;
+  --accent-foreground: #12664d;
+  --destructive: #dc3d4b;
+  --destructive-foreground: #ffffff;
+  --border: #d9e2e7;
+  --input: #d9e2e7;
+  --ring: #159a72;
+  --radius: 0.5rem;
+}
+
+@theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #172033;
+  --color-card: #ffffff;
+  --color-card-foreground: #172033;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #172033;
+  --color-primary: #159a72;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #eef5f3;
+  --color-secondary-foreground: #173b33;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-accent: #e3f5ef;
+  --color-accent-foreground: #12664d;
+  --color-destructive: #dc3d4b;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #d9e2e7;
+  --color-input: #d9e2e7;
+  --color-ring: #159a72;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+}
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Keep semantic HTML styling in page content without affecting UI primitives. */
+.rich-text > h1,
+.rich-text > h2,
+.rich-text > h3,
+.rich-text > h4,
+.rich-text > h5,
+.rich-text > h6 {
+  font-weight: 700;
+  line-height: 1.25;
+  margin-block: 1rem 0.5rem;
+}
+.rich-text > h1 {
+  font-size: 2rem;
+}
+.rich-text > h2 {
+  font-size: 1.5rem;
+}
+.rich-text > h3 {
+  font-size: 1.25rem;
+}
+.rich-text > p {
+  margin-block: 1rem;
+}
+.rich-text > ul {
+  list-style: disc;
+  margin-block: 1rem;
+  padding-inline-start: 1.5rem;
+}
+.rich-text > ol {
+  list-style: decimal;
+  margin-block: 1rem;
+  padding-inline-start: 1.5rem;
+}
+.rich-text > blockquote {
+  border-inline-start: 4px solid var(--border);
+  margin-block: 1rem;
+  padding-inline-start: 1rem;
+}
+.rich-text > table {
+  border-collapse: collapse;
+  margin-block: 1rem;
+}
+.rich-text > table th,
+.rich-text > table td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+}
+
+/* Page-specific adjustments. */
+.component-demo > h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-block: 1rem 0.5rem;
+}
+.component-demo .stepper-indicator {
+  border: 2px solid #64748b;
+}
+.component-demo [data-state='active'] .stepper-indicator {
+  border-color: #159a72;
+}

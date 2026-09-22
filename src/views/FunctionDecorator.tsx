@@ -1,6 +1,7 @@
 import { observer } from 'mobx-vue-helper';
 
 import counterStore from '../models/Counter';
+import { Button } from '../components/ui/button';
 
 /**
  * Example of a function component using the observer wrapper
@@ -11,8 +12,12 @@ export default observer(() => (
     <h1>Function Component with MobX Observer</h1>
     <div>
       <p>Count: {counterStore.count}</p>
-      <button onClick={() => counterStore.increment()}>Increment</button>
-      <button onClick={() => counterStore.decrement()}>Decrement</button>
+      <Button asChild>
+        <button onClick={() => counterStore.increment()}>Increment</button>
+      </Button>
+      <Button asChild variant="outline">
+        <button onClick={() => counterStore.decrement()}>Decrement</button>
+      </Button>
     </div>
   </main>
 ));

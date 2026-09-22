@@ -1,5 +1,6 @@
 import { Component, toNative, Vue, Watch, Prop, TSX } from 'vue-facing-decorator';
 import { observer } from 'mobx-vue-helper';
+import { RotateCw } from '@lucide/vue';
 
 import { Overlay } from './Overlay';
 import * as styles from './ImageUploader.module.css';
@@ -77,7 +78,11 @@ class ImageUploader extends TSX<{ class?: string }>()(Vue) {
             accept={accept || 'image/*'}
             onChange={event => this.preview(event)}
           />
-          {URI && <i class={['pi pi-refresh', styles.rotate]} onClick={() => this.rotate()} />}
+          {URI && (
+            <button class={styles.rotate} type="button" aria-label="Rotate image" onClick={() => this.rotate()}>
+              <RotateCw />
+            </button>
+          )}
         </div>
       </Overlay>
     );

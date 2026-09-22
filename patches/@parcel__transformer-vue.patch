@@ -1,0 +1,57 @@
+diff --git a/lib/VueTransformer.js b/lib/VueTransformer.js
+index fd35e1aa735f28e9305b04a717087d8c038e5eb4..7e3567eb4eeb92d37da97aeb6df9929ad543d821 100644
+--- a/lib/VueTransformer.js
++++ b/lib/VueTransformer.js
+@@ -60,6 +60,7 @@ function compiler() {
+   };
+   return data;
+ }
++compiler().registerTS(() => require("typescript"));
+ function _consolidate() {
+   const data = _interopRequireDefault(require("@ladjs/consolidate"));
+   _consolidate = function () {
+@@ -136,7 +137,12 @@ var _default = exports.default = new (_plugin().Transformer)({
+         ...descriptor,
+         script: descriptor.script != null || descriptor.scriptSetup != null ? compiler().compileScript(descriptor, {
+           id,
+-          isProd: options.mode === 'production'
++          isProd: options.mode === 'production',
++          fs: {
++            fileExists: filePath => options.inputFS.existsSync(filePath),
++            readFile: filePath => options.inputFS.readFileSync(filePath, 'utf8'),
++            realpath: filePath => options.inputFS.realpathSync(filePath)
++          }
+         }) : null,
+         id
+       }
+diff --git a/src/VueTransformer.js b/src/VueTransformer.js
+index acd546d4e7f2407c4d013082534ef2198c31ee42..e54887c13d7fa241b8b55d4ac5baec9deb7f77c6 100644
+--- a/src/VueTransformer.js
++++ b/src/VueTransformer.js
+@@ -13,11 +13,14 @@ import ThrowableDiagnostic, {
+ import SourceMap from '@parcel/source-map';
+ import semver from 'semver';
+ import {basename, extname, relative, dirname} from 'path';
++import * as typescript from 'typescript';
+ // $FlowFixMe
+ import * as compiler from '@vue/compiler-sfc';
+ // $FlowFixMe
+ import consolidate from '@ladjs/consolidate';
+ 
++compiler.registerTS(() => typescript);
++
+ const MODULE_BY_NAME_RE = /\.module\./;
+ 
+ // TODO: Use language-specific config files during preprocessing
+@@ -90,6 +93,11 @@ export default (new Transformer({
+             ? compiler.compileScript(descriptor, {
+                 id,
+                 isProd: options.mode === 'production',
++                fs: {
++                  fileExists: filePath => options.inputFS.existsSync(filePath),
++                  readFile: filePath => options.inputFS.readFileSync(filePath, 'utf8'),
++                  realpath: filePath => options.inputFS.realpathSync(filePath),
++                },
+               })
+             : null,
+         id,
