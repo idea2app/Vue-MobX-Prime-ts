@@ -1,12 +1,17 @@
-import { FunctionalComponent } from 'vue';
+import { h, type Component, FunctionalComponent } from 'vue';
+
+import { Button } from './ui/button';
 
 export interface IconButtonProps {
-  icon: string;
+  icon: Component;
+  label: string;
   onClick?: () => any;
 }
 
-export const IconButton: FunctionalComponent<IconButtonProps> = ({ icon, onClick }) => (
-  <button class="appearance-none bg-transparent border-none cursor-pointer" onClick={onClick}>
-    <i class={`pi pi-${icon}`} />
-  </button>
+export const IconButton: FunctionalComponent<IconButtonProps> = ({ icon, label, onClick }) => (
+  <Button asChild size="icon" variant="ghost">
+    <button aria-label={label} onClick={onClick}>
+      {h(icon)}
+    </button>
+  </Button>
 );

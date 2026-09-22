@@ -1,8 +1,8 @@
-# Vue-MobX-Prime-ts
+# Vue-MobX-Shadcn-ts
 
-[Vue 3][1] project scaffold based on [TypeScript 5][2], [MobX][3] & [PrimeVue 3][4], which is inspired by [WebCell scaffold][5].
+[Vue 3][1] project scaffold based on [TypeScript 5][2], [MobX][3] & [ShadcnVue 2][4], which is inspired by [WebCell scaffold][5].
 
-[![CI & CD](https://github.com/idea2app/Vue-MobX-Prime-ts/actions/workflows/main.yml/badge.svg)][6]
+[![CI & CD](https://github.com/idea2app/Vue-MobX-Shadcn-ts/actions/workflows/main.yml/badge.svg)][6]
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)][7]
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)][8]
@@ -13,7 +13,7 @@ This template should help get you started developing with Vue 3 and Typescript i
 
 - Language: [TypeScript 5][2] + [ES Decorator][10] (stage-3)
 - Component engine: [Vue 3][1]
-- Component suite: [PrimeVue 4][4]
+- Component suite: [ShadcnVue 2][4]
 - Chart library: [ECharts-JSX 1][11]
 - State management: [MobX 6][3]
 - HTTP client: [KoAJAX 3][12]
@@ -43,11 +43,7 @@ import counterStore from './models/Counter';
 @observer
 class MyMobX extends Vue {
   render() {
-    return (
-      <button onClick={() => counterStore.increment()}>
-        Count: {counterStore.count}
-      </button>
-    );
+    return <button onClick={() => counterStore.increment()}>Count: {counterStore.count}</button>;
   }
 }
 export default toNative(MyMobX);
@@ -61,9 +57,7 @@ import { observer } from 'mobx-vue-helper';
 import counterStore from './models/Counter';
 
 export const MyMobX = observer(() => (
-  <button onClick={() => counterStore.increment()}>
-    Count: {counterStore.count}
-  </button>
+  <button onClick={() => counterStore.increment()}>Count: {counterStore.count}</button>
 ));
 ```
 
@@ -121,11 +115,11 @@ Ditch Volar and go back to the official TypeScript and Prettier extensions for a
 [1]: https://vuejs.org/
 [2]: https://www.typescriptlang.org/
 [3]: https://mobx.js.org/
-[4]: https://primevue.org/
+[4]: https://shadcn-vue.com/
 [5]: https://github.com/EasyWebApp/scaffold
-[6]: https://github.com/idea2app/Vue-MobX-Prime-ts/actions/workflows/main.yml
-[7]: https://codespaces.new/idea2app/Vue-MobX-Prime-ts
-[8]: https://gitpod.io/?autostart=true#https://github.com/idea2app/Vue-MobX-Prime-ts
+[6]: https://github.com/idea2app/Vue-MobX-Shadcn-ts/actions/workflows/main.yml
+[7]: https://codespaces.new/idea2app/Vue-MobX-Shadcn-ts
+[8]: https://gitpod.io/?autostart=true#https://github.com/idea2app/Vue-MobX-Shadcn-ts
 [9]: https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 [10]: https://github.com/tc39/proposal-decorators
 [11]: https://github.com/idea2app/ECharts-JSX
@@ -135,11 +129,11 @@ Ditch Volar and go back to the official TypeScript and Prettier extensions for a
 [15]: https://probot.github.io/apps/settings/
 [16]: https://pullrequestbadge.com/
 [17]: https://code.visualstudio.com/
-[18]: https://github.com/new?template_name=Vue-MobX-Prime-ts&template_owner=idea2app
+[18]: https://github.com/new?template_name=Vue-MobX-Shadcn-ts&template_owner=idea2app
 [19]: https://github.com/idea2app/Next-Bootstrap-ts/blob/80967ed49045af9dbcf4d3695a2c39d53a6f71f1/.github/workflows/pull-request.yml#L9-L11
-[20]: https://github.com/idea2app/Vue-MobX-Prime-ts/settings/secrets/actions
+[20]: https://github.com/idea2app/Vue-MobX-Shadcn-ts/settings/secrets/actions
 [21]: https://github.com/kaiyuanshe/kaiyuanshe.github.io/blob/bb4675a56bf1d6b207231313da5ed0af7cf0ebd6/.github/workflows/pull-request.yml#L32-L56
-[22]: https://github.com/idea2app/Vue-MobX-Prime-ts/issues/new/choose
-[23]: https://github.com/idea2app/Vue-MobX-Prime-ts/projects
+[22]: https://github.com/idea2app/Vue-MobX-Shadcn-ts/issues/new/choose
+[23]: https://github.com/idea2app/Vue-MobX-Shadcn-ts/projects
 [24]: https://marketplace.visualstudio.com/items?itemName=vue.volar
 [25]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode

@@ -1,20 +1,26 @@
 {
-  "name": "@idea2app/vue-mobx-prime-ts",
-  "version": "2.5.0",
+  "name": "@idea2app/vue-mobx-shadcn-ts",
+  "version": "3.0.0",
   "private": true,
   "dependencies": {
-    "@primeuix/themes": "^3.0.1",
+    "@lucide/vue": "^1.47.0",
     "@vue-jsx-vapor/runtime": "^3.2.25",
+    "@vueuse/core": "^15.0.0",
     "browser-unhandled-rejection": "^1.0.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "echarts-jsx": "^1.3.1",
     "idb-keyval": "^6.3.0",
     "koajax": "^3.3.1",
+    "lucide-vue-next": "^1.0.0",
     "mobx": "^6.16.1",
     "mobx-downloader": "^0.3.1",
     "mobx-restful": "^2.1.5",
     "mobx-vue-helper": "^0.2.5",
     "mobx-vue-lite": "^0.4.3",
-    "primevue": "^5.0.1",
+    "reka-ui": "^2.10.5",
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.3.3",
     "vue": "3.6.0-rc.9",
     "vue-facing-decorator": "^4.0.1",
     "vue-router": "^5.3.1",
@@ -30,6 +36,7 @@
     "@parcel/packager-raw-url": "~2.16.4",
     "@parcel/transformer-vue": "~2.16.4",
     "@parcel/transformer-webmanifest": "~2.16.4",
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^24.13.6",
     "@vue/tsconfig": "^0.9.1",
     "buffer": "^6.0.3",
@@ -41,12 +48,18 @@
     "postcss": "^8.5.28",
     "postcss-modules": "^9.0.1",
     "prettier": "^3.9.8",
+    "shadcn-helper": "^0.5.10",
+    "shadcn-vue": "2.7.3",
     "typescript": "~6.0.3",
     "vue-tsc": "^3.3.11",
     "workbox-cli": "^7.4.1"
   },
   "@parcel/resolver-default": {
     "packageExports": true
+  },
+  "alias": {
+    "@/lib": "./src/lib",
+    "@/components": "./src/components"
   },
   "prettier": {
     "singleQuote": true,
@@ -60,6 +73,7 @@
   "browserslist": "> 0.5%, last 2 versions, not dead, IE 11",
   "scripts": {
     "prepare": "husky",
+    "install": "shadcn-helper install",
     "clean": "rm -rf .parcel-cache/ dist/",
     "start": "npm run clean  &&  parcel src/index.html",
     "pack": "npm run clean  &&  vue-tsc --noEmit  &&  parcel build src/index.html --public-url .",

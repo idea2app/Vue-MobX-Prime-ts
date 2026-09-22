@@ -2,12 +2,10 @@ import { auto } from 'browser-unhandled-rejection';
 import { serviceWorkerUpdate } from 'web-utility';
 import { createApp } from 'vue';
 import { configure } from 'mobx';
-import PrimeVue from 'primevue/config';
-import Lara from '@primeuix/themes/lara';
-import ConfirmationService from 'primevue/confirmationservice';
 
 import App from './App.vue';
 import router from './router';
+import './assets/index.css';
 
 auto();
 configure({ enforceActions: 'never' });
@@ -30,12 +28,6 @@ if (NODE_ENV !== 'development')
         worker.postMessage({ type: 'SKIP_WAITING' });
     });
 
-serviceWorker?.addEventListener('controllerchange', () =>
-  window.location.reload()
-);
+serviceWorker?.addEventListener('controllerchange', () => window.location.reload());
 
-createApp(App)
-  .use(router)
-  .use(PrimeVue, { theme: { preset: Lara } })
-  .use(ConfirmationService)
-  .mount('#app');
+createApp(App).use(router).mount('#app');

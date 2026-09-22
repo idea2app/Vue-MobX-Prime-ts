@@ -1,6 +1,7 @@
 import { Component, toNative, Vue, Prop, TSX } from 'vue-facing-decorator';
 import { observer } from 'mobx-vue-helper';
-import Button from 'primevue/button';
+
+import { Button } from './ui/button';
 
 import * as styles from './HelloWorld.module.css';
 
@@ -31,8 +32,10 @@ class HelloWorld extends TSX<{ msg: string }>()(Vue) {
           </a>
         </p>
 
-        <Button type="button" severity="primary" onClick={() => this.count++}>
-          count is: {this.count}
+        <Button asChild>
+          <button type="button" onClick={() => this.count++}>
+            count is: {this.count}
+          </button>
         </Button>
         <p>
           Edit <code>components/HelloWorld.vue</code> to test hot module

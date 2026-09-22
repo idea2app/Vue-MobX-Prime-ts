@@ -6,6 +6,14 @@ minimumReleaseAge: 0
 overrides:
   vue: 3.6.0-rc.9
 
+patchedDependencies:
+  '@parcel/transformer-vue': patches/@parcel__transformer-vue.patch
+
+packageExtensions:
+  '@parcel/transformer-vue@2.16.4':
+    dependencies:
+      typescript: '~6.0.3'
+
 allowBuilds:
   '@parcel/watcher': true
   '@swc/core': true
